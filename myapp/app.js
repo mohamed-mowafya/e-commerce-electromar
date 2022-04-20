@@ -6,11 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var sanitize = require('mongo-sanitize');
+
 
 var app = express();
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const dotenv = require('dotenv');
+const helmet = require('helmet')
+
 dotenv.config()
 
 // view engine setup
@@ -22,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(helmet())
 
 
 app.use('/', indexRouter);
