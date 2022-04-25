@@ -28,7 +28,6 @@ mongoose.connect(
 );
 
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
@@ -38,7 +37,7 @@ app.use(session({
   saveUninitialized: true
 }))
 app.use(cors({
-  origin: "http://localhost:3000", // <-- location of the react app were connecting to
+  origin: "http://localhost:3000", 
   credentials: true,
 }
 ))
