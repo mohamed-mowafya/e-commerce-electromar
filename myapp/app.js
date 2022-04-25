@@ -14,6 +14,7 @@ const sanitize = require('mongo-sanitize');
 dotenv.config()
 
 const authRoutes = require('./routes/userAuthRoutes')
+const productRoutes = require('./routes/productRoutes')
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 mongoose.connect(
@@ -51,6 +52,7 @@ require("./controllers/passportConfig")(passport)
 
 //-----------------ROUTES--------------------------------------------------------//
 app.use('/',authRoutes)
+app.use('/',productRoutes)
 
 //// -------------- END OF ROUTES------------------------------------------------//
 app.listen(5000,()=>{
