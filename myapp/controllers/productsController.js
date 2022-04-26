@@ -34,13 +34,14 @@ const createProduct = (req,res) =>{
         }
     })
 }
-const updateProduct = async (req,res) =>{
+const updateProduct = (req,res) =>{
     upload(req,res,(err)=>{
         if(err){
             console.log(err)
         }
         else{
-            await Product.findByIdAndUpdate(req.body.id,{
+            console.log("hereee")
+            Product.findByIdAndUpdate(req.body.id,{
                 name: req.body.name,
                 description: req.body.description,
                 price: req.body.price,
@@ -49,6 +50,13 @@ const updateProduct = async (req,res) =>{
                     contentType:'image/png'
                 }
                
+            },(err,docs)=>{
+                if(err){
+                    res.send(err)
+                }
+                else{
+                    res.send("Updated: " + docs.id)
+                }
             })
         }
     })
