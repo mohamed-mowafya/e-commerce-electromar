@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-const productSchema = new mongoose.Schema({
+const productSchema = new Schema({
     name:{
         type: String,
         required:[true,'Product must have a name']
@@ -18,7 +18,12 @@ const productSchema = new mongoose.Schema({
     image :{
         data:Buffer,
         contentType: String
+    },
+    category:{
+        type:String,
+        required: true
     }
+
 
 });
 
