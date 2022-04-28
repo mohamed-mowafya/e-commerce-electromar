@@ -26,6 +26,7 @@ const signUp = (req,res,next) =>{
           const newUser = new User({
             email: req.body.email,
             password: hashedPassword,
+            admin: req.body.admin
           });
           await newUser.save();
           res.send("User Created");

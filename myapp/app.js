@@ -14,6 +14,7 @@ const sanitize = require('mongo-sanitize');
 dotenv.config()
 
 const authRoutes = require('./routes/userAuthRoutes')
+const productRoutes = require('./routes/productRoutes')
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 mongoose.connect(
@@ -28,7 +29,6 @@ mongoose.connect(
 );
 
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
@@ -38,7 +38,7 @@ app.use(session({
   saveUninitialized: true
 }))
 app.use(cors({
-  origin: "http://localhost:3000", // <-- location of the react app were connecting to
+  origin: "http://localhost:3000", 
   credentials: true,
 }
 ))
@@ -52,6 +52,7 @@ require("./controllers/passportConfig")(passport)
 
 //-----------------ROUTES--------------------------------------------------------//
 app.use('/',authRoutes)
+app.use('/',productRoutes)
 
 //// -------------- END OF ROUTES------------------------------------------------//
 app.listen(5000,()=>{
