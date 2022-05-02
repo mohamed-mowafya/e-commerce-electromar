@@ -81,3 +81,5 @@ const removeFromCart = async (req,res) =>{
         req.status(500).send("DB Error.")
     }
 }
+
+module.exports = {removeFromCart,addToCart,getCart}
