@@ -15,6 +15,8 @@ dotenv.config()
 
 const authRoutes = require('./routes/userAuthRoutes')
 const productRoutes = require('./routes/productRoutes')
+const orderRoutes = require('./routes/orderRoutes')
+const cartRoutes = require('./routes/cartRoutes')
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 mongoose.connect(
@@ -47,12 +49,15 @@ app.use(helmet())
 app.use(passport.initialize());
 app.use(passport.session());
 require("./controllers/passportConfig")(passport)
+require("./controllers/brainTreeController")
 
 
 
 //-----------------ROUTES--------------------------------------------------------//
 app.use('/',authRoutes)
 app.use('/',productRoutes)
+app.use('/',orderRoutes)
+app.use('/',cartRoutes)
 
 //// -------------- END OF ROUTES------------------------------------------------//
 app.listen(5000,()=>{
