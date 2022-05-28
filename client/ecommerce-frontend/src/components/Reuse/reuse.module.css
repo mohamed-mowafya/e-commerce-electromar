@@ -1,0 +1,28 @@
+*{
+    color:white
+}
+
+.topbar{
+    width : 100%;
+    background-color: black;
+    font-size: 13px;
+    font-weight:bold;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+.link:hover{
+    color:red;
+}
+
+.flexContainer{
+    display:flex;
+}
+
+@media (max-width: 800px) {
+    .flexContainer {
+      display: none;
+    }
+  }
