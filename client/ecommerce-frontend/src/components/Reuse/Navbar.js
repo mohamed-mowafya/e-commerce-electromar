@@ -53,16 +53,37 @@ return(
                 <li class="nav-item">
                 <Link className={`nav-link ${classes.navLink}`} to="profile">Products</Link>
                 </li>
+                <div className={classes.mobileAccount}>
+                <li className={`d-flex ${classes.navLink} `}>
+                  
+
+                        <Link className={classes.link} to="profile">My Account</Link>
+                    </li>
+                    <div className={classes.mobileCart}>
+                    <li className={`d-flex ${classes.navLink} `}>
+                  
+                        
+                        <Link className={classes.link} to="profile">My Cart</Link>
+                    </li>
+                    </div>
+                    </div>
+
                 </ul>
                    
                 
-                    <form className={`d-flex  ${classes.searchForm}`}>
+                    <form className={`d-flex  ${classes.searchForm} me-4`}>
                         
                         <input class="form-control me-2" type="search" placeholder=" Search for a product" aria-label="Search" />
                         <button className={`btn ${classes.searchBtn}`} type="submit"><i
                                 className="pi pi-search" /></button>
                     </form>
+                    
+                <div className={`${classes.cart}`}>
+                <i style={{color:"red"}} className={`pi pi-shopping-cart ${classes.cartLogo}`}></i>
+                <Link className={`${classes.link} ps-4`} to="profile">My Cart</Link>
                 </div>
+                </div>
+                
             
                
               

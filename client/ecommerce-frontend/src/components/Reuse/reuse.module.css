@@ -47,16 +47,31 @@
 }
 .searchForm{
     width: 50%;
-   
-   
 }
 
+.cart .cartLogo{
+    padding-left: 40%;
+    padding-bottom: 0;
+    font-size: 20px;
+}
+.mobileAccount{
+    display: none;
+}
+.mobileCart{
+    display: none;
+}
 .navLink:hover{
     color:red
 }
 @media (max-width: 800px) {
     .flexContainer {
       display: none;
+    }
+    .mobileAccount{
+        display: block;
+    }
+    .mobileCart{
+        display: block;
     }
     .navContainer{
         height:10%;
@@ -73,5 +88,8 @@
         width: 80% !important;
         margin-left: auto;
         margin-right: auto;
+    }
+    .cart{
+        display: none;
     }
   }
