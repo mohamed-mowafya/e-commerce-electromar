@@ -4,7 +4,7 @@
 
 .topbar{
     width : 100%;
-    background-color: #202020;
+    background-color: #211f1f;
     font-size: 13px;
     font-weight:bold;
 }
@@ -59,13 +59,19 @@
       display: none;
     }
     .navContainer{
-        height:25vh;
+        height:10%;
         background-color: black !important;   
     }
     .navLink{
         padding: 0 !important;
+        justify-content: center !important;
+        display: flex !important;
+        margin-bottom: 4%;
     }
     .searchForm{
         padding : 0 !important;
+        width: 80% !important;
+        margin-left: auto;
+        margin-right: auto;
     }
   }
