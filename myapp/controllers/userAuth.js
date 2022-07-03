@@ -9,7 +9,7 @@ const login = (req,res,next) =>{
         else {
           req.logIn(user, (err) => {
             if (err) throw err;
-            res.send("Successfully Authenticated");
+            res.send(req.user);
             console.log(req.user);
           });
         }
@@ -34,4 +34,13 @@ const signUp = (req,res,next) =>{
       });
 }
 
-module.exports = {login,signUp}
+const checkAuth = (req,res,next) =>{
+    if(req.isAuthenticated()){
+        res.send("User is authenticated");
+    }
+    else{
+        res.send("Auth error");
+    }
+}
+
+module.exports = {login,signUp,checkAuth}

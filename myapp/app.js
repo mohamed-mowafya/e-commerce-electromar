@@ -36,8 +36,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({
   secret:process.env.SESS_SECRET,
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: true,
+  cookie:{
+    maxAge: null,
+    httpOnly:true
+  }
 }))
 app.use(cors({
   origin: "http://localhost:3000", 
@@ -49,7 +53,7 @@ app.use(helmet())
 app.use(passport.initialize());
 app.use(passport.session());
 require("./controllers/passportConfig")(passport)
-require("./controllers/brainTreeController")
+
 
 
 
