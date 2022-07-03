@@ -1,12 +1,45 @@
 import React, { useEffect } from "react";
 import classes from "./login.module.css"
 import {Link} from "react-router-dom"
+import axios from 'axios'
 
 const Login = () =>{
 
 useEffect(()=>{
     
 },[])
+
+const formHandler = async (e) =>{
+    e.preventDefault();
+
+    debugger;
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    await axios.post('http://localhost:5000/login',{
+
+        email:email,
+        password:password
+
+    },{withCredentials:true}).then(res=>{
+        console.log(res);
+        testFunc()
+    }).catch(err=>{
+        console.log(err);
+    }
+    )
+}
+
+const testFunc = async () =>{
+   await axios.get('http://localhost:5000/isauth',{withCredentials:true}).then(res=>{
+        console.log(res);
+        console.log("here")
+    })
+}
+
+
+
 return(
 <React.Fragment>
         
@@ -15,15 +48,15 @@ return(
     <div className="row">
     <div className="col-md-6">
     <h1 className={`mb-4 ${classes.loginTitle}`}>Sign in</h1>
-    <form className="w-auto">
+    <form onSubmit={formHandler} className="w-auto" >
     <div className="col-sm-6 mb-3">
-    <label for="exampleInputEmail1" className={`form-label ${classes.loginFormText}`}>Email address</label>
-    <input type="email" className={`form-control`} id="exampleInputEmail1" aria-describedby="emailHelp"/>
+    <label for="email" className={`form-label ${classes.loginFormText}`}>Email address</label>
+    <input type="email" className={`form-control`} id="email" aria-describedby="emailHelp"/>
     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="col-sm-6 mb-3">
-    <label for="exampleInputPassword1" className={`form-label ${classes.loginFormText}`}>Password</label>
-    <input type="password" className={`form-control`} id="exampleInputPassword1"/>
+    <label for="password" className={`form-label ${classes.loginFormText}`}>Password</label>
+    <input type="password" className={`form-control`} id="password"/>
   </div>
   <div className="col-sm-5">
    
@@ -53,5 +86,6 @@ return(
 </React.Fragment>
 )
 }
+
 
 export default Login
