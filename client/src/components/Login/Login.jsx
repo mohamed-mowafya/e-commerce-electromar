@@ -45,11 +45,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           className={`form-control`}
           id="email"
-          aria-describedby="emailHelp"
         />
-        <div id="emailHelp" className="form-text">
-          We'll never share your email with anyone else.
-        </div>
       </div>
       <div className="col-lg-6 mb-3">
         <label

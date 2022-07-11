@@ -4,8 +4,8 @@ import React from "react";
 import Navbar from "./components/Reuse/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import SignUp from "./components/Login/Signup";
 import LoginPage from "./routes/LoginPage/LoginPage";
+import SignUpPage from "./routes/SignUpPage/SignUpPage";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup" element={<SignUpPage />} />
         </Routes>
       </Router>
     </React.Fragment>
