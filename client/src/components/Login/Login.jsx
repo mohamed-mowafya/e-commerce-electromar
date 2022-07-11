@@ -32,7 +32,7 @@ const Login = () => {
 
   return (
     <form onSubmit={formHandler} className="w-auto">
-      <div className="col-sm-6 mb-3">
+      <div className="col-lg-6 mb-3">
         <label
           htmlFor="email"
           className={`form-label ${classes.loginFormText}`}
@@ -51,7 +51,7 @@ const Login = () => {
           We'll never share your email with anyone else.
         </div>
       </div>
-      <div className="col-sm-6 mb-3">
+      <div className="col-lg-6 mb-3">
         <label
           htmlFor="password"
           className={`form-label ${classes.loginFormText}`}
@@ -66,7 +66,7 @@ const Login = () => {
           id="password"
         />
       </div>
-      <div className="col-sm-5">
+      <div className="col-lg-5">
         <button
           style={{ backgroundColor: "black" }}
           type="submit"

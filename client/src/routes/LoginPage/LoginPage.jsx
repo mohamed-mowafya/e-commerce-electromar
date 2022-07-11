@@ -9,11 +9,11 @@ const LoginPage = () => {
     <React.Fragment>
       <div className="container p-5">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <h1 className={`mb-4 ${classes.loginTitle}`}>Sign in</h1>
             <Login />
           </div>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <h3 className={`${classes.secondSection}`}>
               Don't have an account?
             </h3>
