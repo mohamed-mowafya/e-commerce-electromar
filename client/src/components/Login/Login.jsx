@@ -1,29 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import classes from "./login.module.css";
 import axios from "axios";
 
 const Login = () => {
-  useEffect(() => {}, []);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const formHandler = async (e) => {
     e.preventDefault();
 
-    debugger;
-
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
     const response = await axios.post(
       "http://localhost:5000/login",
       {
-        email: email,
-        password: password,
+        email,
+        password,
       },
       { withCredentials: true }
     );
 
     console.log(response);
-    testFunc();
   };
 
   const testFunc = async () => {
@@ -38,11 +33,16 @@ const Login = () => {
   return (
     <form onSubmit={formHandler} className="w-auto">
       <div className="col-sm-6 mb-3">
-        <label for="email" className={`form-label ${classes.loginFormText}`}>
+        <label
+          htmlFor="email"
+          className={`form-label ${classes.loginFormText}`}
+        >
           Email address
         </label>
         <input
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className={`form-control`}
           id="email"
           aria-describedby="emailHelp"
@@ -51,11 +51,20 @@ const Login = () => {
           We'll never share your email with anyone else.
         </div>
       </div>
-      <div class="col-sm-6 mb-3">
-        <label for="password" className={`form-label ${classes.loginFormText}`}>
+      <div className="col-sm-6 mb-3">
+        <label
+          htmlFor="password"
+          className={`form-label ${classes.loginFormText}`}
+        >
           Password
         </label>
-        <input type="password" className={`form-control`} id="password" />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className={`form-control`}
+          id="password"
+        />
       </div>
       <div className="col-sm-5">
         <button
