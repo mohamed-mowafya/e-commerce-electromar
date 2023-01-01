@@ -29,17 +29,18 @@ const signUp = (req,res,next) =>{
             admin: req.body.admin
           });
           await newUser.save();
-          res.send("User Created");
+          res.status(201).json({"status": "success"});
         }
       });
 }
 
 const checkAuth = (req,res,next) =>{
     if(req.isAuthenticated()){
-        res.send("User is authenticated");
+        res.status(201).json({"status": "authenticated"});
+        next();
     }
     else{
-        res.send("Auth error");
+        res.status(400).json({"status": "not authenticated"});
     }
 }
 

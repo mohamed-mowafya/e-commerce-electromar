@@ -1,25 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import classes from "./login.module.css";
 import axios from "axios";
 import { toast } from 'react-toastify';
+import isAuth from "../Reuse/IsAuth";
 
 const Login = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const navigate = useNavigate();
+
+  const checkAuth = async () => {
+    let statusCode = await isAuth();
+    if (statusCode === 201) {
+      navigate("/")
+    }
+  }
+
+  useEffect(()=>{
+    checkAuth();
+  },[])
 
   const formHandler = async (e) => {
     e.preventDefault();
-
-    toast.info('Signing in...', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
 
     await axios.post(
       "http://localhost:5000/login",
@@ -33,7 +36,7 @@ const Login = () => {
         toast.dismiss();
         toast.success('Welcome !', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -41,8 +44,11 @@ const Login = () => {
           progress: undefined,
           theme: "dark",
         });
+
+        navigate("/")
+
       })
-      .catch(()=>{
+      .catch(() => {
         toast.dismiss();
         toast.error('Username or password is incorrect', {
           position: "top-right",
