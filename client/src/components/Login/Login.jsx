@@ -1,24 +1,61 @@
 import React, { useState } from "react";
 import classes from "./login.module.css";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   const formHandler = async (e) => {
     e.preventDefault();
 
-    const response = await axios.post(
+    toast.info('Signing in...', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+    await axios.post(
       "http://localhost:5000/login",
       {
         email,
         password,
       },
       { withCredentials: true }
-    );
+    )
+      .then(() => {
+        toast.dismiss();
+        toast.success('Welcome !', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
+      .catch(()=>{
+        toast.dismiss();
+        toast.error('Username or password is incorrect', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
 
-    console.log(response);
   };
 
   const testFunc = async () => {

@@ -19,14 +19,15 @@ const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
-mongoose.connect(
+
+mongoose.connect( // TODO: Add connection error handling.
   process.env.MONGO_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
   () => {
-    console.log("Mongoose Is Connected");
+    console.log("Connected to MongoDB");
   }
 );
 

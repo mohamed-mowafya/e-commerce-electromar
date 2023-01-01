@@ -5,11 +5,11 @@ const bcrypt = require("bcryptjs");
 const login = (req,res,next) =>{
     passport.authenticate("local", (err, user, info) => {
         if (err) throw err;
-        if (!user) res.send("Auth error");
+        if (!user) res.status(403).json({"status": "fail"});
         else {
           req.logIn(user, (err) => {
             if (err) throw err;
-            res.send(req.user);
+            res.json({"status": "success"});
             console.log(req.user);
           });
         }
@@ -19,7 +19,7 @@ const login = (req,res,next) =>{
 const signUp = (req,res,next) =>{
     User.findOne({ email: req.body.email }, async (err, doc) => {
         if (err) throw err;
-        if (doc) res.send("User Already Exists");
+        if (doc) res.status(400).json({"status": "User already exists."});
         if (!doc) {
           const hashedPassword = await bcrypt.hash(req.body.password, 10);
     

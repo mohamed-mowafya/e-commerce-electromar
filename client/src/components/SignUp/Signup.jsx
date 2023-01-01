@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from "../Login/login.module.css";
 
 const SignUp = () => {
-  useEffect(() => {}, []);
   return (
     <React.Fragment>
       <form className="w-auto">
