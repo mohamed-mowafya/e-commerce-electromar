@@ -6,13 +6,15 @@ import "./bootstrap_modif.css";
 import isAuth from "./IsAuth";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    checkAuth();
-  }, [])
+    if(props.renderNav){
+      checkAuth();
+    }
+  }, [props.renderNav])
 
   const checkAuth = async () => {
     let statusCode = await isAuth();

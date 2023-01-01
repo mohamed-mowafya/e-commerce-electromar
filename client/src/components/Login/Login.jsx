@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import isAuth from "../Reuse/IsAuth";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
@@ -44,7 +44,8 @@ const Login = () => {
           progress: undefined,
           theme: "dark",
         });
-
+        
+        props.onSuccess();
         navigate("/")
 
       })

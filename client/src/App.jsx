@@ -7,15 +7,17 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./routes/LoginPage/LoginPage";
 import SignUpPage from "./routes/SignUpPage/SignUpPage";
+import { useState } from "react";
 
 function App() {
+  const [renderNav, setRenderNav] = useState(false);
   return (
     <React.Fragment>
       <Router>
-        <Navbar />
+        <Navbar renderNav={renderNav}></Navbar>
         <ToastContainer/>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage onSuccess={() => setRenderNav(true)}></LoginPage>} />
           <Route path="/signup" element={<SignUpPage />} />
         </Routes>
       </Router>

@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 import Login from "../../components/Login/Login";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   return (
     <React.Fragment>
       <div className="container p-5">
         <div className="row">
           <div className="col-lg-6">
             <h1 className={`mb-4 ${classes.loginTitle}`}>Sign in</h1>
-            <Login />
+            <Login onSuccess={props.onSuccess}></Login>
           </div>
           <div className="col-lg-6 my-5">
             <p style={{ color: "black" }}>
