@@ -12,14 +12,29 @@ const Navbar = (props) => {
 
   useEffect(() => {
     if(props.renderNav){
+      /**
+       * Called only once after a user logs in, in order to
+       * show the good navbar links.
+       */
       checkAuth();
     }
   }, [props.renderNav])
+
+  useEffect(()=>{
+    /**
+     * Used for every time the navbar re renders. If user refreshes page,
+     * We check if he is still authenticated by calling the API.
+     */
+    checkAuth();
+  },[])
 
   const checkAuth = async () => {
     let statusCode = await isAuth();
     if (statusCode === 201) {
       setAuthenticated(true);
+    }
+    else{
+      setAuthenticated(false);
     }
   }
 

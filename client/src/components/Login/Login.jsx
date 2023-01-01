@@ -65,15 +65,6 @@ const Login = (props) => {
 
   };
 
-  const testFunc = async () => {
-    await axios
-      .get("http://localhost:5000/isauth", { withCredentials: true })
-      .then((res) => {
-        console.log(res);
-        console.log("here");
-      });
-  };
-
   return (
     <form onSubmit={formHandler} className="w-auto">
       <div className="col-lg-6 mb-3">
