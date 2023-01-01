@@ -73,9 +73,11 @@ const Navbar = () => {
           <nav
             className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
           >
-            <span className={`navbar-brand ${classes.logo}`} href="#">
+            <Link style={{textDecoration: 'none', marginLeft:"10%"}} to="/">
+            <span className={`navbar-brand ${classes.logo}`}>
               ElectroMar<span style={{ color: "red", fontSize: "42px" }}>.</span>
             </span>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
