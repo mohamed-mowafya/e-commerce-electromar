@@ -12,6 +12,7 @@ const login = (req,res,next) =>{
             res.json({"status": "success"});
             console.log(req.user);
           });
+          next();
         }
       })(req, res, next);
 }

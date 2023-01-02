@@ -1,17 +1,17 @@
 import React from "react";
-import classes from "./loginPage.module.css";
 import { Link } from "react-router-dom";
+import classes from "../../components/Login/LoginPage/loginPage.module.css";
 
-import Login from "../../components/Login/Login";
+import SignUp from "../../components/SignUp/SignupForm/Signup";
 
-const LoginPage = (props) => {
+const SignUpPage = () => {
   return (
     <React.Fragment>
       <div className="container p-5">
         <div className="row">
           <div className="col-lg-6">
-            <h1 className={`mb-4 ${classes.loginTitle}`}>Sign in</h1>
-            <Login onSuccess={props.onSuccess}></Login>
+            <h1 className={`mb-4 ${classes.loginTitle}`}>Create an account</h1>
+            <SignUp />
           </div>
           <div className="col-lg-6 my-5">
             <p style={{ color: "black" }}>
@@ -40,9 +40,9 @@ const LoginPage = (props) => {
             <Link
               className={classes.signUpLink}
               style={{ marginLeft: "1%" }}
-              to="/signup"
+              to="/login"
             >
-              Don't have an account?
+              Already have an account?
             </Link>
           </div>
         </div>
@@ -51,4 +51,4 @@ const LoginPage = (props) => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;

@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import classes from "../Login/login.module.css";
+import classes from "../../Login/LoginForm/login.module.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
-import isAuth from "../Reuse/IsAuth"
+import isAuth from "../../Reusable/IsAuth"
 
 const SignUp = () => {
 

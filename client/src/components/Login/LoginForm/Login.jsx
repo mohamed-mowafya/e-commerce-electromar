@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import classes from "./login.module.css";
 import axios from "axios";
 import { toast } from 'react-toastify';
-import isAuth from "../Reuse/IsAuth";
+import isAuth from "../../Reusable/IsAuth";
 
 const Login = (props) => {
   const [email, setEmail] = useState(null);
