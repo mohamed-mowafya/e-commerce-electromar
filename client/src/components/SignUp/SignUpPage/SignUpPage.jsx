@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "../../components/Login/LoginPage/loginPage.module.css";
+import classes from "../../Login/LoginPage/loginPage.module.css";
 
-import SignUp from "../../components/SignUp/SignupForm/Signup";
+import SignUp from "../SignupForm/Signup";
 
 const SignUpPage = () => {
   return (

@@ -4,6 +4,7 @@ import classes from "./reuse.module.css";
 import "primeicons/primeicons.css";
 import "./bootstrap_modif.css";
 import isAuth from "./IsAuth";
+import axios from "axios";
 
 
 const Navbar = (props) => {
@@ -11,7 +12,7 @@ const Navbar = (props) => {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    if(props.renderNav){
+    if (props.renderNav) {
       /**
        * Called only once after a user logs in, in order to
        * show the good navbar links.
@@ -20,22 +21,34 @@ const Navbar = (props) => {
     }
   }, [props.renderNav])
 
-  useEffect(()=>{
+  useEffect(() => {
     /**
      * Used for every time the navbar re renders. If user refreshes page,
      * We check if he is still authenticated by calling the API.
      */
     checkAuth();
-  },[])
+  }, [])
 
   const checkAuth = async () => {
     let statusCode = await isAuth();
     if (statusCode === 201) {
       setAuthenticated(true);
     }
-    else{
+    else {
+      debugger;
       setAuthenticated(false);
     }
+  }
+
+  const handleLogout = async () => {
+    await axios.post(
+      "http://localhost:5000/logout",
+      {}, {withCredentials: true}
+    )
+    .then(()=>{
+      setAuthenticated(false);
+      props.reset();
+    });
   }
 
   return (
@@ -56,13 +69,22 @@ const Navbar = (props) => {
               <span>1523 rue Saint-Jacques</span>
             </div>
             {authenticated ?
-              <div style={{ marginRight: "10%" }} className="p-2 ms-auto">
-                <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
+              <React.Fragment>
+                <div className="p-2 ms-auto">
+                  <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
 
-                <Link className={classes.link} to="profile">
-                  My Account
-                </Link>
-              </div>
+                  <Link className={classes.link} to="profile">
+                    My Account
+                  </Link>
+                </div>
+
+                <div className="p-2">
+                  <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
+                  <Link onClick={handleLogout} className={classes.link} to="">
+                    Sign out
+                  </Link>
+                </div>
+              </React.Fragment>
               :
               <React.Fragment>
                 <div className="p-2 ms-auto">
@@ -80,99 +102,99 @@ const Navbar = (props) => {
                     Sign up
                   </Link>
                 </div>
-                </React.Fragment>
+              </React.Fragment>
             }
-              </div>
+          </div>
         </div>
-        </div>
+      </div>
 
-        <React.Fragment>
-          <nav
-            className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
-          >
-            <Link style={{textDecoration: 'none', marginLeft:"10%"}} to="/">
+      <React.Fragment>
+        <nav
+          className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
+        >
+          <Link style={{ textDecoration: 'none', marginLeft: "10%" }} to="/">
             <span className={`navbar-brand ${classes.logo}`}>
               ElectroMar<span style={{ color: "red", fontSize: "42px" }}>.</span>
             </span>
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link className={`nav-link ${classes.navLink}`} to="profile">
-                    Products
-                  </Link>
-                </li>
-                {authenticated &&
-
-                  <div className={classes.mobileAccount}>
-                    <li className={`d-flex ${classes.navLink} `}>
-                      <Link className={classes.link} to="profile">
-                        My Account
-                      </Link>
-                    </li>
-                    <div className={classes.mobileCart}>
-                      <li className={`d-flex ${classes.navLink} `}>
-                        <Link className={classes.link} to="profile">
-                          My Cart
-                        </Link>
-                      </li>
-                    </div>
-                  </div>
-                }
-                {!authenticated &&
-                  <div className={classes.mobileAccount}>
-                    <li className={`d-flex ${classes.navLink} `}>
-                      <Link className={classes.link} to="profile">
-                        Sign in
-                      </Link>
-                    </li>
-                    <li className={`d-flex ${classes.navLink} `}>
-                      <Link className={classes.link} to="signup">
-                        Sign up
-                      </Link>
-                    </li>
-                  </div>
-                }
-              </ul>
-
-              <form className={`d-flex  ${classes.searchForm} me-4`}>
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder=" Search for a product"
-                  aria-label="Search"
-                />
-                <button className={`btn ${classes.searchBtn}`} type="submit">
-                  <i className="pi pi-search" />
-                </button>
-              </form>
-
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className={`nav-link ${classes.navLink}`} to="profile">
+                  Products
+                </Link>
+              </li>
               {authenticated &&
-                <div className={`${classes.cart}`}>
-                  <i
-                    style={{ color: "red" }}
-                    className={`pi pi-shopping-cart ${classes.cartLogo}`}
-                  ></i>
-                  <Link className={`${classes.link} ps-4`} to="profile">
-                    My Cart
-                  </Link>
+
+                <div className={classes.mobileAccount}>
+                  <li className={`d-flex ${classes.navLink} `}>
+                    <Link className={classes.link} to="profile">
+                      My Account
+                    </Link>
+                  </li>
+                  <div className={classes.mobileCart}>
+                    <li className={`d-flex ${classes.navLink} `}>
+                      <Link className={classes.link} to="profile">
+                        My Cart
+                      </Link>
+                    </li>
+                  </div>
                 </div>
               }
-            </div>
-          </nav>
-        </React.Fragment>
+              {!authenticated &&
+                <div className={classes.mobileAccount}>
+                  <li className={`d-flex ${classes.navLink} `}>
+                    <Link className={classes.link} to="profile">
+                      Sign in
+                    </Link>
+                  </li>
+                  <li className={`d-flex ${classes.navLink} `}>
+                    <Link className={classes.link} to="signup">
+                      Sign up
+                    </Link>
+                  </li>
+                </div>
+              }
+            </ul>
+
+            <form className={`d-flex  ${classes.searchForm} me-4`}>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder=" Search for a product"
+                aria-label="Search"
+              />
+              <button className={`btn ${classes.searchBtn}`} type="submit">
+                <i className="pi pi-search" />
+              </button>
+            </form>
+
+            {authenticated &&
+              <div className={`${classes.cart}`}>
+                <i
+                  style={{ color: "red" }}
+                  className={`pi pi-shopping-cart ${classes.cartLogo}`}
+                ></i>
+                <Link className={`${classes.link} ps-4`} to="profile">
+                  My Cart
+                </Link>
+              </div>
+            }
+          </div>
+        </nav>
+      </React.Fragment>
     </React.Fragment>
   );
 };

@@ -6,20 +6,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./components/Login/LoginPage/LoginPage";
-import SignUpPage from "./routes/SignUpPage/SignUpPage";
+import SignUpPage from "./components/SignUp/SignUpPage/SignUpPage";
+import ProfilePage from "./components/Profile/ProfilePage/ProfilePage";
 import { useState } from "react";
+import Footer from "./components/Reusable/Footer"
 
 function App() {
   const [renderNav, setRenderNav] = useState(false);
   return (
     <React.Fragment>
       <Router>
-        <Navbar renderNav={renderNav}></Navbar>
+        <Navbar reset={() => setRenderNav(false)} renderNav={renderNav}></Navbar>
         <ToastContainer/>
         <Routes>
+          <Route path="/profile" element={<ProfilePage/>}/>
           <Route path="/login" element={<LoginPage onSuccess={() => setRenderNav(true)}></LoginPage>} />
           <Route path="/signup" element={<SignUpPage />} />
         </Routes>
+        <Footer/>
       </Router>
     </React.Fragment>
   );

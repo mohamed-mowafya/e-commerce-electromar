@@ -1,0 +1,36 @@
+.welcomeMessage {
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 1%;
+}
+
+.bottomSpacing{
+    padding-bottom: 0;
+}
+
+.parentDiv {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1%;
+}
+
+.linkPosition {
+    padding-bottom: 50px;
+}
+
+@media (max-width: 800px) {
+    .bottomSpacing{
+        padding-bottom: 60%;
+    }
+
+    .linkPosition {
+        padding-bottom: 0px;
+    }
+
+    .welcomeMessage {
+        color: black;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding-top: 30px;
+    }
+    
+}
