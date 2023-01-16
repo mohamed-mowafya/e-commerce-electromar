@@ -156,7 +156,7 @@ const Navbar = (props) => {
               {!authenticated &&
                 <div className={classes.mobileAccount}>
                   <li className={`d-flex ${classes.navLink} `}>
-                    <Link className={classes.link} to="profile">
+                    <Link className={classes.link} to="login">
                       Sign in
                     </Link>
                   </li>

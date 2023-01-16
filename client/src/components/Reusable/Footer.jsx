@@ -5,9 +5,9 @@ const Footer = () => {
     return (
         <footer className={`bg-dark text-center text-white footer ${classes.footer}`}>
   
-        <div className="container p-2 pb-0">
+        <div className="container pb-3 pt-3 pb-0">
           
-          <section className="mb-3">
+          <section className="mb-5">
             
             <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
               ><i className="fab fa-facebook-f"></i></a>

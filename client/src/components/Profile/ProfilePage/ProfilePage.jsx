@@ -14,7 +14,7 @@ const ProfilePage = () => {
                     <div className="card-body">
                         <h5 className="card-title mb-3" style={{ color: "black" }}><i className="pi pi-user-edit me-2" style={{ color: "red" }}></i>Personal Information</h5>
                         <h6 className={`card-subtitle text-muted mb-4 ${classes.linkPosition}`}>Update your account password at any time.</h6>
-                        <Link to="/">Your personal details &gt;</Link>
+                        <Link to="/settings">Your personal details &gt;</Link>
                     </div>
                 </div>
                 <div className={`${classes.bottomSpacing} card ms-2`} style={{ width: "25rem", height: "13rem" }}>

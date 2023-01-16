@@ -17,6 +17,10 @@ const Login = (props) => {
     }
   }
 
+  const setUserIdentity = (identity) => {
+    localStorage.setItem("userIdentity", identity)
+  }
+
   useEffect(()=>{
     checkAuth();
   },[])
@@ -46,6 +50,7 @@ const Login = (props) => {
         });
         
         props.onSuccess();
+        setUserIdentity(email);
         navigate("/")
 
       })
