@@ -9,7 +9,7 @@ const login = (req, res, next) =>{
         else {
           req.logIn(user, (err) => {
             if (err) throw err;
-            res.json({"status": "success"});
+            res.status(200).json({"status": "success"});
             console.log(req.user);
           });
           next();

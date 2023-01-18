@@ -7,7 +7,7 @@ const userAuthController = require('../controllers/userAuth')
 const profileController = require("../controllers/profileController")
 
 router.post('/login', userAuthController.login);
-router.post('/update-user', userAuthController.login, profileController.updateProfile);
+router.patch('/update-user', profileController.updateProfile);
 router.post('/register', userAuthController.signUp);
 router.post("/logout", userAuthController.logOut);
 router.get('/isauth', userAuthController.checkAuth);

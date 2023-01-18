@@ -5,6 +5,8 @@ import reuseClasses from "../../Reusable/reuse.module.css";
 import isAuth from "../../Reusable/IsAuth";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ProfileSettings = () => {
 
@@ -39,19 +41,38 @@ const ProfileSettings = () => {
     }, [confirmNewPassword, newPassword])
 
     const checkAuth = async () => {
-        debugger;
         let statusCode = await isAuth();
-        debugger;
         if (statusCode !== 201) {
-            debugger;
-            navigate("/");
+            navigate("/login");
         }
-        debugger;
+    }
+
+    const updateUser = async () => {
+        let updateRes = await axios.patch("http://localhost:5000/update-user", {
+            email: email,
+            password: oldPassword,
+            newPassword: newPassword
+        }, { withCredentials: true }
+        ).then(()=>{
+            toast.success('Profile updated !', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            
+              navigate("/login");
+        });
+
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        updateUser();
     }
 
     return (

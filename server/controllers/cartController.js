@@ -74,7 +74,7 @@ const removeFromCart = async (req,res) =>{
 
         await cart.save()
 
-        res.status(200).send("Item Removed")
+        res.status(201).send("Item Removed")
     }
 
     catch(err){
