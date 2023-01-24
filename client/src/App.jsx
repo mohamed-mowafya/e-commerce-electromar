@@ -11,6 +11,8 @@ import ProfilePage from "./components/Profile/ProfilePage/ProfilePage";
 import { useState } from "react";
 import Footer from "./components/Reusable/Footer"
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
+import HomePage from "./components/Home/HomePage/HomePage";
+
 function App() {
   const [renderNav, setRenderNav] = useState(false);
   return (
@@ -19,6 +21,7 @@ function App() {
         <Navbar reset={() => setRenderNav(false)} renderNav={renderNav}></Navbar>
         <ToastContainer/>
         <Routes>
+          <Route path="/" element={<HomePage/>}/>
           <Route path="profile" element={<ProfilePage/>}/>
           <Route path="settings" element={<ProfileSettings/>}/>
           <Route path="login" element={<LoginPage onSuccess={() => setRenderNav(true)}></LoginPage>}/>

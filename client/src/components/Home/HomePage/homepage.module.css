@@ -1,0 +1,26 @@
+.carouselSpan {
+    color: red;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 40px;
+    margin-top: 1000%;
+}
+
+.carouselImgContainer {
+    position: relative;
+}
+
+.carouselTextRight {
+    position: absolute;
+    right: 25%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 13%;
+    font-size: 50px;
+}
+
+.carouselTextLeft {
+    position: absolute;
+    left: 19.5%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 12%;
+    font-size: 50px;
+}
