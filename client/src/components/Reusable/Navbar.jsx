@@ -28,84 +28,13 @@ const Navbar = (props) => {
     }
   };
 
-  const handleLogout = () => {
-    axios
-      .post("http://localhost:5000/logout", {}, { withCredentials: true })
-      .then(() => {
-        setAuthenticated(false);
-        props.reset();
-      });
-  };
-
   return (
     <React.Fragment>
-      <div className={classes.topbar}>
-        <div style={{ marginLeft: "12%" }}>
-          <div className={classes.flexContainer}>
-            <div className="p-2">
-              <i style={{ color: "red" }} className="p-2 pi pi-phone"></i>
-              <span>514-333-3333</span>
-            </div>
-            <div className="p-2">
-              <i style={{ color: "red" }} className="p-2 pi pi-at"></i>
-              <span>electromar@electromar.ca</span>
-            </div>
-            <div className="p-2">
-              <i style={{ color: "red" }} className="p-2 pi pi-map-marker"></i>
-              <span>1523 rue Saint-Jacques</span>
-            </div>
-            {authenticated ? (
-              <React.Fragment>
-                <div className="p-2 ms-auto">
-                  <i
-                    style={{ color: "red" }}
-                    className="pi pi-user p-2 pt-2"
-                  ></i>
-
-                  <Link className={classes.link} to="profile">
-                    My Account
-                  </Link>
-                </div>
-
-                <div className="p-2">
-                  <i
-                    style={{ color: "red" }}
-                    className="pi pi-sign-out p-2 pt-2"
-                  ></i>
-                  <Link onClick={handleLogout} className={classes.link} to="">
-                    Sign out
-                  </Link>
-                </div>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <div className="p-2 ms-auto">
-                  <i
-                    style={{ color: "red", paddingTop: "10%" }}
-                    className="p-2 pi pi-sign-in"
-                  ></i>
-
-                  <Link className={classes.link} to="login">
-                    Sign in
-                  </Link>
-                </div>
-
-                <div className="p-2">
-                  <i
-                    style={{ color: "red", paddingTop: "10%" }}
-                    className="p-2 pi pi-user"
-                  ></i>
-
-                  <Link className={classes.link} to="signup">
-                    Sign up
-                  </Link>
-                </div>
-              </React.Fragment>
-            )}
-          </div>
-        </div>
-      </div>
-
+      <TopBar
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+        reset={props.reset}
+      />
       <React.Fragment>
         <nav
           className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
@@ -193,6 +122,96 @@ const Navbar = (props) => {
           </div>
         </nav>
       </React.Fragment>
+    </React.Fragment>
+  );
+};
+
+const TopBar = ({ authenticated, setAuthenticated, reset }) => {
+  return (
+    <div className={classes.topbar}>
+      <div style={{ marginLeft: "12%" }}>
+        <div className={classes.flexContainer}>
+          <div className="p-2">
+            <i style={{ color: "red" }} className="p-2 pi pi-phone"></i>
+            <span>514-333-3333</span>
+          </div>
+          <div className="p-2">
+            <i style={{ color: "red" }} className="p-2 pi pi-at"></i>
+            <span>electromar@electromar.ca</span>
+          </div>
+          <div className="p-2">
+            <i style={{ color: "red" }} className="p-2 pi pi-map-marker"></i>
+            <span>1523 rue Saint-Jacques</span>
+          </div>
+          {authenticated ? (
+            <SignedInBar
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+              reset={reset}
+            />
+          ) : (
+            <SignedOutBar />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const SignedInBar = ({ authenticated, setAuthenticated, reset }) => {
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:5000/logout", {}, { withCredentials: true })
+      .then(() => {
+        setAuthenticated(false);
+        reset();
+      });
+  };
+
+  return (
+    <React.Fragment>
+      <div className="p-2 ms-auto">
+        <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
+
+        <Link className={classes.link} to="profile">
+          My Account
+        </Link>
+      </div>
+
+      <div className="p-2">
+        <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
+        <Link onClick={handleLogout} className={classes.link} to="">
+          Sign out
+        </Link>
+      </div>
+    </React.Fragment>
+  );
+};
+
+const SignedOutBar = () => {
+  return (
+    <React.Fragment>
+      <div className="p-2 ms-auto">
+        <i
+          style={{ color: "red", paddingTop: "10%" }}
+          className="p-2 pi pi-sign-in"
+        ></i>
+
+        <Link className={classes.link} to="login">
+          Sign in
+        </Link>
+      </div>
+
+      <div className="p-2">
+        <i
+          style={{ color: "red", paddingTop: "10%" }}
+          className="p-2 pi pi-user"
+        ></i>
+
+        <Link className={classes.link} to="signup">
+          Sign up
+        </Link>
+      </div>
     </React.Fragment>
   );
 };
