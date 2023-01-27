@@ -6,50 +6,36 @@ import "./bootstrap_modif.css";
 import isAuth from "./IsAuth";
 import axios from "axios";
 
-
 const Navbar = (props) => {
-
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     if (props.renderNav) {
       /**
-       * Called only once after a user logs in, in order to
-       * show the good navbar links.
+       * Used for every time the navbar re renders. If user refreshes page,
+       * We check if he is still authenticated by calling the API.
        */
       checkAuth();
     }
-  }, [props.renderNav])
-
-  useEffect(() => {
-    /**
-     * Used for every time the navbar re renders. If user refreshes page,
-     * We check if he is still authenticated by calling the API.
-     */
-    checkAuth();
-  }, [])
+  }, [props.renderNav]);
 
   const checkAuth = async () => {
     let statusCode = await isAuth();
     if (statusCode === 201) {
       setAuthenticated(true);
-    }
-    else {
-      debugger;
+    } else {
       setAuthenticated(false);
     }
-  }
+  };
 
-  const handleLogout = async () => {
-    await axios.post(
-      "http://localhost:5000/logout",
-      {}, {withCredentials: true}
-    )
-    .then(()=>{
-      setAuthenticated(false);
-      props.reset();
-    });
-  }
+  const handleLogout = () => {
+    axios
+      .post("http://localhost:5000/logout", {}, { withCredentials: true })
+      .then(() => {
+        setAuthenticated(false);
+        props.reset();
+      });
+  };
 
   return (
     <React.Fragment>
@@ -68,10 +54,13 @@ const Navbar = (props) => {
               <i style={{ color: "red" }} className="p-2 pi pi-map-marker"></i>
               <span>1523 rue Saint-Jacques</span>
             </div>
-            {authenticated ?
+            {authenticated ? (
               <React.Fragment>
                 <div className="p-2 ms-auto">
-                  <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
+                  <i
+                    style={{ color: "red" }}
+                    className="pi pi-user p-2 pt-2"
+                  ></i>
 
                   <Link className={classes.link} to="profile">
                     My Account
@@ -79,16 +68,22 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="p-2">
-                  <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
+                  <i
+                    style={{ color: "red" }}
+                    className="pi pi-sign-out p-2 pt-2"
+                  ></i>
                   <Link onClick={handleLogout} className={classes.link} to="">
                     Sign out
                   </Link>
                 </div>
               </React.Fragment>
-              :
+            ) : (
               <React.Fragment>
                 <div className="p-2 ms-auto">
-                  <i style={{ color: "red", paddingTop: "10%" }} className="p-2 pi pi-sign-in"></i>
+                  <i
+                    style={{ color: "red", paddingTop: "10%" }}
+                    className="p-2 pi pi-sign-in"
+                  ></i>
 
                   <Link className={classes.link} to="login">
                     Sign in
@@ -96,14 +91,17 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="p-2">
-                  <i style={{ color: "red", paddingTop: "10%" }} className="p-2 pi pi-user"></i>
+                  <i
+                    style={{ color: "red", paddingTop: "10%" }}
+                    className="p-2 pi pi-user"
+                  ></i>
 
                   <Link className={classes.link} to="signup">
                     Sign up
                   </Link>
                 </div>
               </React.Fragment>
-            }
+            )}
           </div>
         </div>
       </div>
@@ -112,9 +110,10 @@ const Navbar = (props) => {
         <nav
           className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
         >
-          <Link style={{ textDecoration: 'none', marginLeft: "10%" }} to="/">
+          <Link style={{ textDecoration: "none", marginLeft: "10%" }} to="/">
             <span className={`navbar-brand ${classes.logo}`}>
-              ElectroMar<span style={{ color: "red", fontSize: "42px" }}>.</span>
+              ElectroMar
+              <span style={{ color: "red", fontSize: "42px" }}>.</span>
             </span>
           </Link>
           <button
@@ -136,8 +135,7 @@ const Navbar = (props) => {
                   Products
                 </Link>
               </li>
-              {authenticated &&
-
+              {authenticated && (
                 <div className={classes.mobileAccount}>
                   <li className={`d-flex ${classes.navLink} `}>
                     <Link className={classes.link} to="profile">
@@ -152,8 +150,8 @@ const Navbar = (props) => {
                     </li>
                   </div>
                 </div>
-              }
-              {!authenticated &&
+              )}
+              {!authenticated && (
                 <div className={classes.mobileAccount}>
                   <li className={`d-flex ${classes.navLink} `}>
                     <Link className={classes.link} to="login">
@@ -166,7 +164,7 @@ const Navbar = (props) => {
                     </Link>
                   </li>
                 </div>
-              }
+              )}
             </ul>
 
             <form className={`d-flex  ${classes.searchForm} me-4`}>
@@ -181,7 +179,7 @@ const Navbar = (props) => {
               </button>
             </form>
 
-            {authenticated &&
+            {authenticated && (
               <div className={`${classes.cart}`}>
                 <i
                   style={{ color: "red" }}
@@ -191,7 +189,7 @@ const Navbar = (props) => {
                   My Cart
                 </Link>
               </div>
-            }
+            )}
           </div>
         </nav>
       </React.Fragment>
