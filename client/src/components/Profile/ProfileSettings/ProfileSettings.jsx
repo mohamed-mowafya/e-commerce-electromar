@@ -28,11 +28,13 @@ const ProfileSettings = () => {
      */
 
     if (!authenticated) navigate("/login");
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authenticated]);
 
   useEffect(() => {
     let userEmail = localStorage.getItem("userIdentity");
     setEmail(userEmail);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ const ProfileSettings = () => {
   }, [confirmNewPassword, newPassword]);
 
   const updateUser = () => {
-    let updateRes = axios
+    axios
       .patch(
         "http://localhost:5000/update-user",
         {
