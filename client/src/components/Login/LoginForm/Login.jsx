@@ -1,44 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import classes from "./login.module.css";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import isAuth from "../../Reusable/IsAuth";
+import { useSelector, useDispatch } from "react-redux";
 
-const Login = (props) => {
-  const [email, setEmail] = useState(null);
+const Login = () => {
+  const dispatch = useDispatch();
+
+  const authenticated = useSelector(({ user }) => user.authenticated);
+  const email = useSelector(({ user }) => user.email);
+  const setEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
+
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
 
   const checkAuth = async () => {
     let statusCode = await isAuth();
     if (statusCode === 201) {
-      navigate("/")
+      if (!authenticated)
+        dispatch({ type: "SET_AUTHENTICATED", payload: true });
+      navigate("/");
     }
-  }
+  };
 
   const setUserIdentity = (identity) => {
-    localStorage.setItem("userIdentity", identity)
-  }
+    localStorage.setItem("userIdentity", identity);
+  };
 
-  useEffect(()=>{
-    checkAuth();
-  },[])
+  useEffect(() => {
+    if (!authenticated) checkAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authenticated]);
 
   const formHandler = async (e) => {
     e.preventDefault();
 
-    await axios.post(
-      "http://localhost:5000/login",
-      {
-        email,
-        password,
-      },
-      { withCredentials: true }
-    )
+    await axios
+      .post(
+        "http://localhost:5000/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
       .then(() => {
         toast.dismiss();
-        toast.success('Welcome !', {
+        toast.success("Welcome !", {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -48,15 +58,13 @@ const Login = (props) => {
           progress: undefined,
           theme: "dark",
         });
-        
-        props.onSuccess();
-        setUserIdentity(email);
-        navigate("/")
 
+        setUserIdentity(email);
+        checkAuth();
       })
       .catch(() => {
         toast.dismiss();
-        toast.error('Username or password is incorrect', {
+        toast.error("Username or password is incorrect", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -66,8 +74,7 @@ const Login = (props) => {
           progress: undefined,
           theme: "dark",
         });
-      })
-
+      });
   };
 
   return (
