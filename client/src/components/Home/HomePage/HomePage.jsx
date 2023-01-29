@@ -15,23 +15,14 @@ const HomePage = () => {
         <div className="carousel-item active">
           <div>
             <div className={classes.carouselImgContainer}>
-              <img src={forspoken} className="w-100" alt="PS5" />
+              <img src={forspoken} className="w-100" alt="forspoken banner" />
               <span className={classes.carouselTextLeft}>FIND YOUR FIGHT</span>
             </div>
           </div>
         </div>
-
-        <div className="carousel-item">
-          <div>
-            <img src={xbox} className="w-100" alt="PS5" />
-          </div>
-        </div>
-
-        <div className="carousel-item w-100">
-          <div>
-            <img src={psvr2} className="w-100" alt="PS5" />
-          </div>
-        </div>
+        <CarouselImg src={xbox} alt="xbox banner" />
+        <CarouselImg src={psvr2} alt="psvr2 banner" />
+        <CarouselImg src={iphone} alt="iphone banner" />
       </div>
       <button
         className="carousel-control-prev"
@@ -54,5 +45,13 @@ const HomePage = () => {
     </div>
   );
 };
+
+const CarouselImg = ({ src, alt }) => (
+  <div className="carousel-item">
+    <div>
+      <img src={src} className="w-100" alt={alt} />
+    </div>
+  </div>
+);
 
 export default HomePage;
