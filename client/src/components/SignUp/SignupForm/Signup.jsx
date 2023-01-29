@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import isAuth from "../../Reusable/IsAuth";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -38,9 +39,21 @@ const SignUp = () => {
         email,
         password,
         admin: false, // Users don't have admin access by default.
-      });
+      }).then(() => {
+        toast.success("Welcome, please sign in with your new account.", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+          )
+      })
+      navigate("/login")
 
-      checkAuth();
       setShowPassError(false);
     }
   };
