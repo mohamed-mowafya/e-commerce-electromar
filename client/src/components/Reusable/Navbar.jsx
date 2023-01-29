@@ -1,40 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./reuse.module.css";
 import "primeicons/primeicons.css";
 import "./bootstrap_modif.css";
-import isAuth from "./IsAuth";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-const Navbar = (props) => {
-  const [authenticated, setAuthenticated] = useState(false);
-
-  useEffect(() => {
-    if (props.renderNav) {
-      /**
-       * Used for every time the navbar re renders. If user refreshes page,
-       * We check if he is still authenticated by calling the API.
-       */
-      checkAuth();
-    }
-  }, [props.renderNav]);
-
-  const checkAuth = async () => {
-    let statusCode = await isAuth();
-    if (statusCode === 201) {
-      setAuthenticated(true);
-    } else {
-      setAuthenticated(false);
-    }
-  };
+const Navbar = () => {
+  const authenticated = useSelector(({ user }) => user.authenticated);
 
   return (
     <React.Fragment>
-      <TopBar
-        authenticated={authenticated}
-        setAuthenticated={setAuthenticated}
-        reset={props.reset}
-      />
+      <TopBar />
       <React.Fragment>
         <nav
           className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
@@ -64,36 +41,8 @@ const Navbar = (props) => {
                   Products
                 </Link>
               </li>
-              {authenticated && (
-                <div className={classes.mobileAccount}>
-                  <li className={`d-flex ${classes.navLink} `}>
-                    <Link className={classes.link} to="profile">
-                      My Account
-                    </Link>
-                  </li>
-                  <div className={classes.mobileCart}>
-                    <li className={`d-flex ${classes.navLink} `}>
-                      <Link className={classes.link} to="profile">
-                        My Cart
-                      </Link>
-                    </li>
-                  </div>
-                </div>
-              )}
-              {!authenticated && (
-                <div className={classes.mobileAccount}>
-                  <li className={`d-flex ${classes.navLink} `}>
-                    <Link className={classes.link} to="login">
-                      Sign in
-                    </Link>
-                  </li>
-                  <li className={`d-flex ${classes.navLink} `}>
-                    <Link className={classes.link} to="signup">
-                      Sign up
-                    </Link>
-                  </li>
-                </div>
-              )}
+              {authenticated && <bar.auth.MyCart />}
+              {!authenticated && <bar.notAuth.MyCart />}
             </ul>
 
             <form className={`d-flex  ${classes.searchForm} me-4`}>
@@ -126,7 +75,9 @@ const Navbar = (props) => {
   );
 };
 
-const TopBar = ({ authenticated, setAuthenticated, reset }) => {
+const TopBar = () => {
+  const authenticated = useSelector(({ user }) => user.authenticated);
+
   return (
     <div className={classes.topbar}>
       <div style={{ marginLeft: "12%" }}>
@@ -143,77 +94,112 @@ const TopBar = ({ authenticated, setAuthenticated, reset }) => {
             <i style={{ color: "red" }} className="p-2 pi pi-map-marker"></i>
             <span>1523 rue Saint-Jacques</span>
           </div>
-          {authenticated ? (
-            <SignedInBar
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-              reset={reset}
-            />
-          ) : (
-            <SignedOutBar />
-          )}
+          {authenticated ? <bar.auth.MyAccount /> : <bar.notAuth.MyAccount />}
         </div>
       </div>
     </div>
   );
 };
 
-const SignedInBar = ({ authenticated, setAuthenticated, reset }) => {
-  const handleLogout = () => {
-    axios
-      .post("http://localhost:5000/logout", {}, { withCredentials: true })
-      .then(() => {
-        setAuthenticated(false);
-        reset();
-      });
-  };
+const bar = {
+  auth: {
+    MyAccount: () => {
+      const dispatch = useDispatch();
+      const setAuthenticated = (auth) => {
+        dispatch({ type: "SET_AUTHENTICATED", paylod: auth });
+      };
 
-  return (
-    <React.Fragment>
-      <div className="p-2 ms-auto">
-        <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
+      const handleLogout = () => {
+        axios
+          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .then(() => {
+            setAuthenticated(false);
+          });
+      };
 
-        <Link className={classes.link} to="profile">
-          My Account
-        </Link>
-      </div>
+      return (
+        <React.Fragment>
+          <div className="p-2 ms-auto">
+            <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
 
-      <div className="p-2">
-        <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
-        <Link onClick={handleLogout} className={classes.link} to="">
-          Sign out
-        </Link>
-      </div>
-    </React.Fragment>
-  );
-};
+            <Link className={classes.link} to="profile">
+              My Account
+            </Link>
+          </div>
 
-const SignedOutBar = () => {
-  return (
-    <React.Fragment>
-      <div className="p-2 ms-auto">
-        <i
-          style={{ color: "red", paddingTop: "10%" }}
-          className="p-2 pi pi-sign-in"
-        ></i>
+          <div className="p-2">
+            <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
+            <Link onClick={handleLogout} className={classes.link} to="">
+              Sign out
+            </Link>
+          </div>
+        </React.Fragment>
+      );
+    },
+    MyCart: () => {
+      return (
+        <div className={classes.mobileAccount}>
+          <li className={`d-flex ${classes.navLink} `}>
+            <Link className={classes.link} to="profile">
+              My Account
+            </Link>
+          </li>
+          <div className={classes.mobileCart}>
+            <li className={`d-flex ${classes.navLink} `}>
+              <Link className={classes.link} to="profile">
+                My Cart
+              </Link>
+            </li>
+          </div>
+        </div>
+      );
+    },
+  },
+  notAuth: {
+    MyAccount: () => {
+      return (
+        <React.Fragment>
+          <div className="p-2 ms-auto">
+            <i
+              style={{ color: "red", paddingTop: "10%" }}
+              className="p-2 pi pi-sign-in"
+            ></i>
 
-        <Link className={classes.link} to="login">
-          Sign in
-        </Link>
-      </div>
+            <Link className={classes.link} to="login">
+              Sign in
+            </Link>
+          </div>
 
-      <div className="p-2">
-        <i
-          style={{ color: "red", paddingTop: "10%" }}
-          className="p-2 pi pi-user"
-        ></i>
+          <div className="p-2">
+            <i
+              style={{ color: "red", paddingTop: "10%" }}
+              className="p-2 pi pi-user"
+            ></i>
 
-        <Link className={classes.link} to="signup">
-          Sign up
-        </Link>
-      </div>
-    </React.Fragment>
-  );
+            <Link className={classes.link} to="signup">
+              Sign up
+            </Link>
+          </div>
+        </React.Fragment>
+      );
+    },
+    MyCart: () => {
+      return (
+        <div className={classes.mobileAccount}>
+          <li className={`d-flex ${classes.navLink} `}>
+            <Link className={classes.link} to="login">
+              Sign in
+            </Link>
+          </li>
+          <li className={`d-flex ${classes.navLink} `}>
+            <Link className={classes.link} to="signup">
+              Sign up
+            </Link>
+          </li>
+        </div>
+      );
+    },
+  },
 };
 
 export default Navbar;

@@ -11,7 +11,7 @@ const LoginPage = (props) => {
         <div className="row">
           <div className="col-lg-6">
             <h1 className={`mb-4 ${classes.loginTitle}`}>Sign in</h1>
-            <Login reset={props.resetRenderNav} onSuccess={props.onSuccess}></Login>
+            <Login />
           </div>
           <div className="col-lg-6 my-5">
             <p style={{ color: "black" }}>
