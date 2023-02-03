@@ -92,6 +92,15 @@ html { overflow-y: scroll; }
   height: 60%;
 }
 
+.carousel-cell {
+  min-height: 100%;
+  width: 60%;
+}
+
+.carousel-cell img {
+  width: 100%;
+}
+
 @media only screen and (max-width: 768px) {
   .flickity-prev-next-button {
     display: none;

@@ -10,8 +10,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const authenticated = useSelector(({ user }) => user.authenticated);
-  const email = useSelector(({ user }) => user.email);
-  const setEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
+  const [email, setEmail] = useState(null);
+  const dispatchEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
 
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
@@ -25,14 +25,14 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    if (authenticated) navigate("/")
+    checkAuth();
+  }, [authenticated]);
+
   const setUserIdentity = (identity) => {
     localStorage.setItem("userIdentity", identity);
   };
-
-  useEffect(() => {
-    if (!authenticated) checkAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authenticated]);
 
   const formHandler = async (e) => {
     e.preventDefault();
@@ -59,8 +59,9 @@ const Login = () => {
           theme: "dark",
         });
 
-        setUserIdentity(email);
         checkAuth();
+        setUserIdentity(email);
+        dispatchEmail(email);
       })
       .catch(() => {
         toast.dismiss();

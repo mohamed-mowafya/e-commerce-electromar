@@ -13,21 +13,19 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const authenticated = useSelector(({ user }) => user.authenticated);
-  const email = useSelector(({ user }) => user.email);
-  const setEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
 
+  const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPass, setConfirmPass] = useState(null);
   const [showPassError, setShowPassError] = useState(false);
 
   useEffect(() => {
-    if (!authenticated) checkAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (authenticated) navigate("/")
+    checkAuth();
   }, [authenticated]);
 
   useEffect(() => {
     if (showPassError) setShowPassError(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [password, confirmPass]);
 
   const handleSubmit = async (e) => {
@@ -50,7 +48,7 @@ const SignUp = () => {
           progress: undefined,
           theme: "dark",
         }
-          )
+        )
       })
       navigate("/login")
 

@@ -13,8 +13,7 @@ const ProfileSettings = () => {
   const navigate = useNavigate();
 
   const authenticated = useSelector(({ user }) => user.authenticated);
-  const email = useSelector(({ user }) => user.email);
-  const setEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
+  const [email, setEmail] = useState("");
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
