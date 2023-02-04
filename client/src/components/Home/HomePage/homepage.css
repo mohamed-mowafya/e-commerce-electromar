@@ -6,3 +6,29 @@
     height: 400px;
     object-fit: cover;
   }
+
+  @media screen and (max-width: 768px) {
+    .carousel-item {
+      height: 180px;
+      }
+    .carousel-control-prev-icon {
+      display: none !important;
+    }
+    .carousel-control-next-icon {
+      display: none !important;
+    }
+    
+      .carousel-item img {
+        height: 180px;
+        object-fit: cover;
+      }
+    .btn {
+      font-size: 0.7rem !important;
+    }
+
+    .splide__track {
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+    
+  }

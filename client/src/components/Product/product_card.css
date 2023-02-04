@@ -2,7 +2,22 @@
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-.splide__arrow{
+
+.splide__arrow {
   background: none !important;
   top: 35% !important;
+}
+
+.splide__pagination {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .splide__arrow {
+    display: none;
+  }
+  .splide__arrow svg {
+    display: none;
+  }
+
 }
