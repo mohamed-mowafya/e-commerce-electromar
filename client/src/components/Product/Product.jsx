@@ -10,7 +10,7 @@ const Product = () => {
 
     const Card = (card) => {
         return (
-            <div className="card col-md-4 border-0 ms-auto me-auto">
+            <div className="card col-md-5 g-0 border-0 ms-auto me-auto">
                 <div className="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
                     data-mdb-ripple-color="light">
                     <img className="card-img-top" src={splatoon} />
@@ -36,14 +36,16 @@ const Product = () => {
 
     return (
         <React.Fragment>
-            <h3 className={`${reuseClasses.productText} text-dark mt-5 text-center mb-4 pb-2`}>Featured Products</h3>
+            <div className="ms-auto me-auto">
+            <h3 className={`${reuseClasses.productText} text-dark mt-5 text-center mb-4 pb-1`}>Featured Products</h3>
             <div className="wrapper">
                 <Splide
                     options={{
-                        perPage: 3,
+                        perPage: 5,
                         height: '30rem',
                         rewind: true,
-                        gap: '1.5rem',
+                        padding: 0,
+                        gap: '1px',
                     }}
                  
                 >
@@ -65,8 +67,9 @@ const Product = () => {
                     
                 </Splide>
             </div>
-
+            </div>
         </React.Fragment>
+        
     );
 
 };

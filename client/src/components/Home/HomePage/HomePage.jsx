@@ -2,7 +2,7 @@ import React from "react";
 import aorus from "../../../images/carousel/aorus.jpg";
 import psvr2 from "../../../images/carousel/psvr2.jpg"
 import gow from "../../../images/carousel/gow.jpg"
-
+import Products from "../../Product/Product";
 import "./homepage.css"
 import { useEffect } from "react";
 import $ from 'jquery';
@@ -34,7 +34,7 @@ const HomePage = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-
+    <Products/>
     </React.Fragment>
   );
 
