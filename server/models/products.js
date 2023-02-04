@@ -18,10 +18,6 @@ const productSchema = new Schema({
     image :{
         data:Buffer,
         contentType: String
-    },
-    category:{
-        type:String,
-        required: true
     }
 
 
