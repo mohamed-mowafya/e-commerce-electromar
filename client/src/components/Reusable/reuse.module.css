@@ -14,7 +14,8 @@
   }
   
 .productTitle {
-    font-size: 25px;
+    font-size: 18px;
+    color: gray;
   }
 
 .topbar{
@@ -22,6 +23,12 @@
     background-color: #211f1f;
     font-size: 13px;
     font-weight:bold;
+}
+
+.cartBtn {
+    background: none;
+    color: red !important;
+    text-transform: uppercase;
 }
 
 .link{
@@ -34,6 +41,12 @@
 
 .flexContainer{
     display:flex;
+}
+
+.productText{
+    font-size: 35px !important;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 
