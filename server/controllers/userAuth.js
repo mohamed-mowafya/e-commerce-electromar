@@ -10,7 +10,6 @@ const login = (req, res, next) =>{
           req.logIn(user, (err) => {
             if (err) throw err;
             res.status(200).json({"status": "success"});
-            console.log(req.user);
           });
           next();
         }

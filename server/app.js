@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
-const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
@@ -10,7 +9,6 @@ const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
-const sanitize = require("mongo-sanitize");
 dotenv.config();
 
 const authRoutes = require("./routes/userAuthRoutes");
@@ -20,8 +18,7 @@ const cartRoutes = require("./routes/cartRoutes");
 const fileRoutes = require("./routes/fileRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
-
-mongoose.connect( // TODO: Add connection error handling.
+mongoose.connect(
   process.env.MONGO_URI,
   {
     useNewUrlParser: true,
@@ -66,8 +63,8 @@ app.use("/", cartRoutes);
 app.use("/", fileRoutes)
 
 //// -------------- END OF ROUTES------------------------------------------------//
-app.listen(5000, () => {
-  console.log("Listening on port 5000");
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on port ${process.env.PORT}`);
 });
 
 module.exports = app;

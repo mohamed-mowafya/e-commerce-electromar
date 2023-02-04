@@ -45,7 +45,6 @@ const updateProduct = (req,res) =>{
             console.log(err)
         }
         else{
-            console.log("hereee")
             Product.findByIdAndUpdate(req.body.id,{
                 name: req.body.name,
                 description: req.body.description,
