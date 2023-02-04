@@ -24,6 +24,7 @@ const createProduct = (req,res) =>{
             console.log(err)
         }
         else{
+            if(!req.user.admin) res.status(400).send("Unauthroized user.")
             const product = new Product({
                 name: req.body.name,
                 description: req.body.description,
@@ -45,6 +46,7 @@ const updateProduct = (req,res) =>{
             console.log(err)
         }
         else{
+            if(!req.user.admin) res.status(400).send("Unauthroized user.")
             Product.findByIdAndUpdate(req.body.id,{
                 name: req.body.name,
                 description: req.body.description,
