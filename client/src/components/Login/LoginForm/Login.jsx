@@ -10,10 +10,10 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const authenticated = useSelector(({ user }) => user.authenticated);
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("");
   const dispatchEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
 
-  const [password, setPassword] = useState(null);
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const checkAuth = async () => {

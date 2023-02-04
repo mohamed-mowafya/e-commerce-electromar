@@ -1,47 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import xbox from "../../../images/carousel/xbox.jpg";
-import iphone from "../../../images/carousel/iphone.jpg"
-import classes from "./homepage.module.css";
 import psvr2 from "../../../images/carousel/psvr2.jpg"
-import forspoken from "../../../images/carousel/forspoken.jpg"
+import gow from "../../../images/carousel/gow.jpg"
 import "./flickity_modif.css";
-import Flickity from 'react-flickity-component';
-import isAuth from "../../Reusable/IsAuth";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
 
-  const flickityOptions = {
-    autoPlay: true,
-    wrapAround: true,
-    isSelected: true
-  }
-
-  const CarouselImg = ({ src, alt }) => (
-    <div className="carousel-cell">
-      <div>
-        <img src={src} className={`w-100 img-fluid ${classes.carousel}`} alt={alt} />
-      </div>
-    </div>
-  );
-
-
   return (
-    <Flickity
-      className={'carousel'} // default ''
-      elementType={'div'} // default 'div' 
-      options={flickityOptions}// takes flickity options {}
-      disableImagesLoaded={true} // default false
-      reloadOnUpdate // default false
-      static // default false
-    >
-      <CarouselImg src={forspoken} alt="forspoken" />
-      <CarouselImg src={xbox} alt="Xbox" />
-      <CarouselImg src={psvr2} alt="PSVR2" />
-    </Flickity>
-
-
+    <React.Fragment>
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src={xbox} class="d-block w-100" alt="..."/>
+          </div>
+          <div class="carousel-item">
+            <img src={psvr2} class="d-block w-100" alt="..."/>
+          </div>
+          <div class="carousel-item">
+            <img src={gow} class="d-block w-100" alt="..."/>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </React.Fragment>
   );
 
 };
