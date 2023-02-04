@@ -13,6 +13,11 @@ const upload = multer({
     storage: Storage
 }).single('image')
 
+const getProducts = async (req, res) => {
+    let products = await Product.find({});
+
+    res.send(products);
+}
 const createProduct = (req,res) =>{
     upload(req,res,(err)=>{
         if(err){
@@ -24,7 +29,7 @@ const createProduct = (req,res) =>{
                 description: req.body.description,
                 price: req.body.price,
                 image:{
-                    data:req.file.filename,
+                    fileName:req.file.originalname,
                     contentType:'image/png'
                 }
             })
@@ -75,4 +80,4 @@ const deleteProduct = (req,res) =>{
 
 }
 
-module.exports = {createProduct,deleteProduct,updateProduct}
+module.exports = {createProduct,deleteProduct,updateProduct, getProducts}

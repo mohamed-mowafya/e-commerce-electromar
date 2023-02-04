@@ -17,6 +17,7 @@ const authRoutes = require("./routes/userAuthRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const fileRoutes = require("./routes/fileRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 
@@ -62,6 +63,7 @@ app.use("/", authRoutes);
 app.use("/", productRoutes);
 app.use("/", orderRoutes);
 app.use("/", cartRoutes);
+app.use("/", fileRoutes)
 
 //// -------------- END OF ROUTES------------------------------------------------//
 app.listen(5000, () => {

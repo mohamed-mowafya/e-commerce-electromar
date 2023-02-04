@@ -16,7 +16,7 @@ const productSchema = new Schema({
         required : [true,'A price is required for the product']
     },
     image :{
-        data:Buffer,
+        fileName:String,
         contentType: String
     }
 
