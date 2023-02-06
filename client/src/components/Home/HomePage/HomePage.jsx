@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import aorus from "../../../images/carousel/aorus.jpg";
 import psvr2 from "../../../images/carousel/psvr2.jpg"
 import gow from "../../../images/carousel/gow.jpg"
@@ -6,9 +6,33 @@ import Products from "../../Product/Product";
 import "./homepage.css"
 import { useEffect } from "react";
 import $ from 'jquery';
+import axios from "axios";
 
 
 const HomePage = () => {
+
+  const [homeProducts, setHomeProducts] = useState([]);
+
+  useEffect(() => {
+    getFeaturedProducts();
+  }, [])
+
+  const getFeaturedProducts = async () => {
+    await axios.get("http://localhost:5000/products", {
+      params: {
+        limit: 5
+      }
+    }
+    )
+      .then((res) => {
+        setHomeProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+
 
 
   return (
@@ -18,7 +42,7 @@ const HomePage = () => {
           <div className="carousel-item active">
             <img src={aorus} className="d-block w-100" data-bs-interval="2000" alt="aorus" />
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <img src={psvr2} className="d-block w-100" data-bs-interval="2000" alt="psvr2" />
           </div>
           <div className="carousel-item">
@@ -34,7 +58,9 @@ const HomePage = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-    <Products/>
+      {homeProducts.length > 0 &&
+        <Products products = {homeProducts} />
+      }
     </React.Fragment>
   );
 

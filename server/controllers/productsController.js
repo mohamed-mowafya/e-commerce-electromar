@@ -13,10 +13,18 @@ const upload = multer({
     storage: Storage
 }).single('image')
 
-const getProducts = async (req, res) => {
-    let products = await Product.find({});
+const getProducts = async (req, res, next) => {
 
-    res.send(products);
+    let products = {};
+
+    if(req.query.limit){
+       products =  await Product.find({}).limit(req.query.limit)
+       res.status(200).send(products);
+       return next();
+    }
+    products = await Product.find({});
+
+    res.status(200).send(products);
 }
 const createProduct = (req,res) =>{
     upload(req,res,(err)=>{
@@ -24,7 +32,7 @@ const createProduct = (req,res) =>{
             console.log(err)
         }
         else{
-            if(!req.user.admin) res.status(400).send("Unauthroized user.")
+           // if(!req.user.admin) res.status(400).send("Unauthroized user.");
             const product = new Product({
                 name: req.body.name,
                 description: req.body.description,

@@ -3,6 +3,12 @@
   border-top-left-radius: 0;
 }
 
+img.card-img-top {
+  height: 200px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
 .splide__arrow {
   background: none !important;
   top: 35% !important;
@@ -16,6 +22,7 @@
   .splide__arrow {
     display: none;
   }
+
   .splide__arrow svg {
     display: none;
   }

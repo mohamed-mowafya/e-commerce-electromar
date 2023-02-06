@@ -3,15 +3,20 @@ import "./product_card.css"
 import reuseClasses from "../../components/Reusable/reuse.module.css";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import splatoon from "../../images/products/splatoon.jpg"
 
 
-const Product = () => {
+const Product = (props) => {
 
     const [width, setWidth] = useState(window.innerWidth);
 
+
     const isMobile = () => {
         return window.matchMedia('screen and (max-width: 768px)').matches;
+    }
+
+    const buildImageUrl = (fileName) => {
+        console.log(fileName);
+        return `http://localhost:5000/file/${fileName}`;
     }
 
     useEffect(() => {
@@ -30,66 +35,56 @@ const Product = () => {
         };
     }, []);
 
-    const Card = (card) => {
+    const Card = ({ product }) => {
         return (
-            <div className="card col-md-5 g-0 border-0 ms-auto me-auto">
-                <div className="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
-                    data-mdb-ripple-color="light">
-                    <img className="card-img-top" src={splatoon} />
-                    <a href="#!">
-                        <div className="mask"></div>
-                    </a>
+            <div className="card col-md-5 g-0 border-0 ms-auto me-auto d-flex flex-wrap align-items-center">
+                <div className="bg-image hover-overlay ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                    <img crossorigin="anonymous" className="card-img-top" src={buildImageUrl(product.image.fileName)} />
                 </div>
-                <div className="card-body p-0">
+                <div className="card-body p-0 d-flex flex-column">
                     <div className="text-left">
-                        <p className={`${reuseClasses.productTitle} pb-0`}>Dell Xtreme 270</p>
-                        <b><p className={`text-dark `}>333$</p></b>
+                        <p className="text-muted mb-0 p-0">NEW</p>
+                        <b><p className={`text-dark mb-0`}>{product.price}$</p></b>
+                        <p className={`${reuseClasses.productTitle} pb-0`} style={{height: "60px"}}>{product.name}</p>
+
                     </div>
-                </div>
-                <div className="card-body p-0 mt-md-2">
                     <div className="d-flex justify-content-center">
                         <i style={{ color: "red" }} className="pi pi-shopping-cart mt-md-1 pe-2 fw-bold" />
                         <button type="button" className={`btn p-0 ${reuseClasses.cartBtn} fw-bold`}>Add to cart</button>
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <React.Fragment>
-            <div className="ms-auto me-auto">
-                <h3 className={`${reuseClasses.productText} text-dark mt-5 text-center mb-5 pb-1`}>Featured Products</h3>
-                <div className="wrapper">
-                    <Splide
-                        options={{
-                            perPage: isMobile() ? 3 : 5,
-                            height: '30rem',
-                            rewind: true,
-                            padding: 0,
-                            gap: '0.5rem',
-                        }}
+            {props.products &&
+                <div className="ms-auto me-auto">
+                    <h3 className={`${reuseClasses.productText} text-dark mt-5 text-center mb-5 pb-1`}>Featured Products</h3>
+                    <div className="wrapper">
+                        <Splide
+                            options={{
+                                perPage: isMobile() ? 3 : 5,
+                                height: '30rem',
+                                rewind: true,
+                                padding: 0,
+                                gap: '0.5rem',
+                            }}
+                        >
+                            {props.products.map((product) => {
 
-                    >
-                        <SplideSlide>
-                            <Card />
-                        </SplideSlide>
-                        <SplideSlide>
-                            <Card />
-                        </SplideSlide>
-                        <SplideSlide>
-                            <Card />
-                        </SplideSlide>
-                        <SplideSlide>
-                            <Card />
-                        </SplideSlide>
-                        <SplideSlide>
-                            <Card />
-                        </SplideSlide>
+                                return (
+                                    <SplideSlide>
+                                        <Card product={product} />
+                                    </SplideSlide>
+                                )
 
-                    </Splide>
+                            })}
+                        </Splide>
+                    </div>
                 </div>
-            </div>
+            }
         </React.Fragment>
 
     );
