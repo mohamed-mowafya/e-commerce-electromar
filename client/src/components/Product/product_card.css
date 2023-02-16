@@ -23,8 +23,22 @@ img.card-img-top {
     display: none;
   }
 
+  .mobile-mt {
+    margin-top: 10%;
+  }
+
+  img.card-img-top {
+    height: 140px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
   .splide__arrow svg {
     display: none;
+  }
+
+  .pi-shopping-cart {
+    padding: 0;
   }
 
 }

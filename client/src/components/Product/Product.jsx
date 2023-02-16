@@ -48,7 +48,7 @@ const Product = (props) => {
                         <p className={`${reuseClasses.productTitle} pb-0`} style={{height: "60px"}}>{product.name}</p>
 
                     </div>
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center mobile-mt">
                         <i style={{ color: "red" }} className="pi pi-shopping-cart mt-md-1 pe-2 fw-bold" />
                         <button type="button" className={`btn p-0 ${reuseClasses.cartBtn} fw-bold`}>Add to cart</button>
                     </div>
