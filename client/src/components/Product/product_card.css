@@ -9,6 +9,10 @@ img.card-img-top {
   object-fit: cover !important;
 }
 
+.desc-width {
+  width: 157px;
+}
+
 .splide__arrow {
   background: none !important;
   top: 35% !important;
@@ -26,6 +30,11 @@ img.card-img-top {
   .mobile-mt {
     margin-top: 10%;
   }
+
+  .desc-width {
+    width: 100%;
+  }
+  
 
   img.card-img-top {
     height: 140px !important;

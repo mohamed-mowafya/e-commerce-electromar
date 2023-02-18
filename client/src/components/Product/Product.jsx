@@ -41,8 +41,8 @@ const Product = (props) => {
                 <div className="bg-image hover-overlay ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
                     <img crossorigin="anonymous" className="card-img-top" src={buildImageUrl(product.image.fileName)} />
                 </div>
-                <div className="card-body p-0 d-flex flex-column">
-                    <div className="text-left">
+                <div className="card-body p-0 d-flex flex-column text-left">
+                    <div className="text-left desc-width">
                         <p className="text-muted mb-0 p-0">NEW</p>
                         <b><p className={`text-dark mb-0`}>{product.price}$</p></b>
                         <p className={`${reuseClasses.productTitle} pb-0`} style={{height: "60px"}}>{product.name}</p>

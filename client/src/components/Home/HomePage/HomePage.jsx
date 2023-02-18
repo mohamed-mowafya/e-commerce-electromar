@@ -20,7 +20,7 @@ const HomePage = () => {
   const getFeaturedProducts = async () => {
     await axios.get("http://localhost:5000/products", {
       params: {
-        limit: 5
+        limit: 8
       }
     }
     )
