@@ -4,25 +4,19 @@ import classes from "../../Login/LoginForm/login.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import isAuth from "../../Reusable/IsAuth";
+import useAuth from "../../hooks/useAuth";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const authenticated = useSelector(({ user }) => user.authenticated);
+  useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPass, setConfirmPass] = useState(null);
   const [showPassError, setShowPassError] = useState(false);
-
-  useEffect(() => {
-    if (authenticated) navigate("/")
-    checkAuth();
-  }, [authenticated]);
 
   useEffect(() => {
     if (showPassError) setShowPassError(false);
@@ -53,15 +47,6 @@ const SignUp = () => {
       navigate("/login")
 
       setShowPassError(false);
-    }
-  };
-
-  const checkAuth = async () => {
-    let statusCode = await isAuth();
-    if (statusCode === 201) {
-      if (!authenticated)
-        dispatch({ type: "SET_AUTHENTICATED", payload: true });
-      navigate("/");
     }
   };
 

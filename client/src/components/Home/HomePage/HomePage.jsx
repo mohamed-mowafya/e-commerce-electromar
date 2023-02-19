@@ -5,12 +5,12 @@ import gow from "../../../images/carousel/gow.jpg"
 import Products from "../../Product/Product";
 import "./homepage.css"
 import { useEffect } from "react";
-import $ from 'jquery';
+import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 
 const HomePage = () => {
-
+  useAuth();
   const [homeProducts, setHomeProducts] = useState([]);
 
   useEffect(() => {

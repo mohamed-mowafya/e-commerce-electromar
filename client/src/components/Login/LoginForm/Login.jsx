@@ -1,34 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import classes from "./login.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import isAuth from "../../Reusable/IsAuth";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import useAuth  from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  useAuth();
   const dispatch = useDispatch();
-
-  const authenticated = useSelector(({ user }) => user.authenticated);
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const dispatchEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
 
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const checkAuth = async () => {
-    let statusCode = await isAuth();
-    if (statusCode === 201) {
-      if (!authenticated)
-        dispatch({ type: "SET_AUTHENTICATED", payload: true });
-      navigate("/");
-    }
-  };
-
-  useEffect(() => {
-    if (authenticated) navigate("/")
-    checkAuth();
-  }, [authenticated]);
 
   const setUserIdentity = (identity) => {
     localStorage.setItem("userIdentity", identity);
@@ -58,10 +43,10 @@ const Login = () => {
           progress: undefined,
           theme: "dark",
         });
-
-        checkAuth();
         setUserIdentity(email);
         dispatchEmail(email);
+        dispatch({ type: "SET_AUTHENTICATED", payload: true });
+        navigate("/")
       })
       .catch(() => {
         toast.dismiss();
