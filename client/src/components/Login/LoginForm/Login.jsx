@@ -7,7 +7,7 @@ import useAuth  from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  useAuth();
+  useAuth(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

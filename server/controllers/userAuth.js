@@ -29,19 +29,19 @@ const signUp = (req, res, next) =>{
             admin: req.body.admin
           });
           await newUser.save();
-          res.status(201).json({"status": "success"});
+          res.status(200).json({"status": "success"});
         }
       });
 }
 
 const logOut = (req, res, next) => {
   req.logout();
-  res.status(201).json({"status": "success"})
+  res.status(200).json({"status": "success"})
 }
 
 const checkAuth = (req, res, next) =>{
     if(req.isAuthenticated()){
-        res.status(201).json({"status": "authenticated"});
+        res.status(200).json({"status": "authenticated", "email": req.user});
         next();
     }
     else{

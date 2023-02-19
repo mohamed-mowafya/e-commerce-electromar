@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 const SignUp = () => {
 
-  useAuth();
+  useAuth(true);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState(null);

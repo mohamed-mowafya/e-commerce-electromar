@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className={`nav-link ${classes.navLink}`} to="profile">
+                <Link className={`nav-link ${classes.navLink}`} to="products">
                   Products
                 </Link>
               </li>

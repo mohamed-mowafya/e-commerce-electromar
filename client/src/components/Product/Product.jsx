@@ -15,7 +15,6 @@ const Product = (props) => {
     }
 
     const buildImageUrl = (fileName) => {
-        console.log(fileName);
         return `http://localhost:5000/file/${fileName}`;
     }
 
@@ -39,7 +38,7 @@ const Product = (props) => {
         return (
             <div className="card col-md-5 g-0 border-0 ms-auto me-auto d-flex flex-wrap align-items-center">
                 <div className="bg-image hover-overlay ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
-                    <img crossorigin="anonymous" className="card-img-top" src={buildImageUrl(product.image.fileName)} />
+                    <img crossOrigin="anonymous" className="card-img-top" src={buildImageUrl(product.image.fileName)} />
                 </div>
                 <div className="card-body p-0 d-flex flex-column text-left">
                     <div className="text-left desc-width">

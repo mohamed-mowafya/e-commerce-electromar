@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./profilePage.module.css"
+import useAuth from "../../hooks/useAuth";
 
 const ProfilePage = () => {
+    useAuth();
     return (
         <React.Fragment>
             <div className={classes.parentDiv}>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import aorus from "../../../images/carousel/aorus.jpg";
 import psvr2 from "../../../images/carousel/psvr2.jpg"
 import gow from "../../../images/carousel/gow.jpg"
-import Products from "../../Product/Product";
+import Product from "../../Product/Product";
 import "./homepage.css"
 import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -59,7 +59,7 @@ const HomePage = () => {
         </button>
       </div>
       {homeProducts.length > 0 &&
-        <Products products = {homeProducts} />
+        <Product products = {homeProducts} />
       }
     </React.Fragment>
   );

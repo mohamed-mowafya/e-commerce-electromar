@@ -3,16 +3,18 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-const useAuth = () => {
+const useAuth = (redirect, protectedRoute) => {
   const authenticated = useSelector(({ user }) => user.authenticated);
   const dispatch = useDispatch();
+  const dispatchEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
+  const dispatchAuth = () => dispatch({ type: "SET_AUTHENTICATED", payload: true });
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!authenticated){
-      const checkAuth = async () =>{
-        const statusCode = await isAuth();
-        handleAuth(statusCode);
+    if (!authenticated) {
+      const checkAuth = async () => {
+        const authRes = await isAuth();
+        handleAuth(authRes);
       }
       checkAuth();
     }
@@ -25,14 +27,17 @@ const useAuth = () => {
         return 400;
       });
 
-    return res.status;
+    return res;
   };
 
 
-  const handleAuth = (statusCode) => {
-    if (statusCode === 201) {
-      dispatch({ type: "SET_AUTHENTICATED", payload: true });
-      navigate("/");
+  const handleAuth = (authRes) => {
+    if (authRes.status === 200) {
+      if (!protectedRoute) {
+        dispatchAuth();
+        dispatchEmail(authRes.data.email);
+        if (redirect) navigate("/");
+      }
     }
   }
 }

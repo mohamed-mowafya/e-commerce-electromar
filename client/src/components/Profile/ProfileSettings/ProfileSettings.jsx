@@ -6,35 +6,17 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useSelector, useDispatch } from "react-redux";
+import useAuth from "../../hooks/useAuth";
 
 const ProfileSettings = () => {
-  const dispatch = useDispatch();
+  useAuth();
   const navigate = useNavigate();
-
-  const authenticated = useSelector(({ user }) => user.authenticated);
   const [email, setEmail] = useState("");
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
-
-  useEffect(() => {
-    /**
-     * Will redirect user to the login page if he's trying to access the profile settings page without
-     * being logged in.
-     */
-
-    if (!authenticated) navigate("/login");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authenticated]);
-
-  useEffect(() => {
-    let userEmail = localStorage.getItem("userIdentity");
-    setEmail(userEmail);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     if (confirmNewPassword !== newPassword && confirmNewPassword.length > 0) {
