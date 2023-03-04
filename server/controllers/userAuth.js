@@ -41,7 +41,7 @@ const logOut = (req, res, next) => {
 
 const checkAuth = (req, res, next) =>{
     if(req.isAuthenticated()){
-        res.status(200).json({"status": "authenticated", "email": req.user});
+        res.status(200).json({"status": "authenticated", "email": req.user.email});
         next();
     }
     else{

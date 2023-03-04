@@ -7,16 +7,22 @@ import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
+import { useSelector } from "react-redux";
 
 const ProfileSettings = () => {
   useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
+  const email = useSelector(({user}) => user.email);
+  const [userIdentity, setUserIdentity] = useState(null);
+  
+  useEffect(()=>{
+    setUserIdentity(email);
+  },[email])
 
   useEffect(() => {
     if (confirmNewPassword !== newPassword && confirmNewPassword.length > 0) {
@@ -83,7 +89,7 @@ const ProfileSettings = () => {
               className={`form-control`}
               type="email"
               id="email"
-              value={email}
+              value={userIdentity}
               disabled
             />
           </div>

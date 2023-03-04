@@ -15,10 +15,6 @@ const Login = () => {
 
   const [password, setPassword] = useState("");
 
-  const setUserIdentity = (identity) => {
-    localStorage.setItem("userIdentity", identity);
-  };
-
   const formHandler = async (e) => {
     e.preventDefault();
 
@@ -43,7 +39,6 @@ const Login = () => {
           progress: undefined,
           theme: "dark",
         });
-        setUserIdentity(email);
         dispatchEmail(email);
         dispatch({ type: "SET_AUTHENTICATED", payload: true });
         navigate("/")
