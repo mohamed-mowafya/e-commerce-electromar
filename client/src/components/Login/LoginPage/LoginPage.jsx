@@ -15,7 +15,7 @@ const LoginPage = (props) => {
           </div>
           <div className="col-lg-6 my-5">
             <p style={{ color: "black" }}>
-              Here are some of the benefits you’ll enjoy:
+              Here are some of the benefits you'll enjoy:
             </p>
             <div className="d-flex">
               <i

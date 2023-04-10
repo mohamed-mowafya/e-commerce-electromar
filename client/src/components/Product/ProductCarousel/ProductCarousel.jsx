@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./product_card.css"
-import reuseClasses from "../../components/Reusable/reuse.module.css";
+import "../product_card.css"
+import reuseClasses from "../../../components/Reusable/reuse.module.css";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
