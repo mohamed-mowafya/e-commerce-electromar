@@ -56,7 +56,20 @@ const ProfileSettings = () => {
         });
 
         navigate("/login");
-      });
+      })
+
+      .catch((e)=> {
+        toast.error("An error has occured: " + e.response.data.status, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
   };
 
   const handleSubmit = (event) => {
