@@ -1,4 +1,4 @@
-*{
+* {
     color:white
 }
 
@@ -13,9 +13,13 @@
     height: 6%;
   }
   
+  .card-body {
+    height: 100%;
+  }
 .productTitle {
     font-size: 18px;
     color: gray;
+    min-height: 80px;
   }
 
 .topbar{
@@ -29,6 +33,7 @@
     background: none;
     color: red !important;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .link{
@@ -103,6 +108,9 @@
     color:red
 }
 @media (max-width: 800px) {
+    .productTitle{
+        min-height: 0px;
+    }
     .productText{
         font-size: 24px !important;
         color: black;
