@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import aorus from "../../../images/carousel/aorus.jpg";
 import psvr2 from "../../../images/carousel/psvr2.jpg"
 import gow from "../../../images/carousel/gow.jpg"
-import Product from "../../Product/Product";
+import Product from "../../Product/ProductCarousel/ProductCarousel";
 import "./homepage.css"
 import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -31,9 +31,6 @@ const HomePage = () => {
         console.log(err);
       })
   }
-
-
-
 
   return (
     <React.Fragment>

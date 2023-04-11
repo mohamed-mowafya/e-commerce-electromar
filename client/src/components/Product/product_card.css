@@ -6,11 +6,15 @@
 img.card-img-top {
   height: 200px !important;
   width: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain;
 }
 
 .desc-width {
-  width: 157px;
+  width: 8em;
+}
+
+.desc-width-home {
+  width: 9.5em;
 }
 
 .splide__arrow {
@@ -27,14 +31,17 @@ img.card-img-top {
     display: none;
   }
 
+  .desc-width {
+    width: 7em !important;
+  }
+
+  .desc-width-home {
+    width: 7em;
+  }  
+
   .mobile-mt {
     margin-top: 10%;
   }
-
-  .desc-width {
-    width: 100%;
-  }
-  
 
   img.card-img-top {
     height: 140px !important;
