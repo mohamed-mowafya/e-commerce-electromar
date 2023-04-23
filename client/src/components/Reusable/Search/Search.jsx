@@ -8,19 +8,14 @@ const Search = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [searchQuery, setSearchQuery] = useState('');
-    const dispatchSearch = () => dispatch({type: "SEARCH", payload: searchQuery});
+    const dispatchSearch = (searchQuery) => dispatch({type: "SEARCH", payload: searchQuery});
 
     const handleSearch = (e) => {
         e.preventDefault();
         const searchQuery = e.target.search.value.trim();
-        setSearchQuery(searchQuery);
+        dispatchSearch(searchQuery);
         navigate("/products");
     }
-
-    useEffect(()=>{
-        dispatchSearch();
-    },[searchQuery])
 
     return (
         <form onSubmit={handleSearch} className={`d-flex  ${classes.searchForm} me-4`}>
