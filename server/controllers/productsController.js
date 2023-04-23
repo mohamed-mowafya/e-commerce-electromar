@@ -22,6 +22,12 @@ const getProducts = async (req, res, next) => {
        res.status(200).send(products);
        return next();
     }
+    
+    if(req.query.search){
+        products = await Product.find({ name: { $regex: req.query.search, $options: 'i' } });
+        res.status(200).send(products);
+        return next();
+    }
     products = await Product.find({});
 
     res.status(200).send(products);
@@ -32,7 +38,7 @@ const createProduct = (req,res) =>{
             console.log(err)
         }
         else{
-           // if(!req.user.admin) res.status(400).send("Unauthroized user.");
+           if(!req.user.admin) res.status(400).send("Unauthroized user.");
             const product = new Product({
                 name: req.body.name,
                 description: req.body.description,
@@ -69,7 +75,7 @@ const updateProduct = (req,res) =>{
                     res.send(err)
                 }
                 else{
-                    res.send("Updated: " + docs.id)
+                    res.status(200).send("Product updated.")
                 }
             })
         }

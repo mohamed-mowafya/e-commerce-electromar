@@ -11,6 +11,8 @@ const userReducer = (state = userState, action) => {
       return { ...state, authenticated: action.payload };
     case "SET_EMAIL":
       return { ...state, email: action.payload };
+    case "SEARCH":
+      return {...state, search: action.payload}
     default:
       return state;
   }

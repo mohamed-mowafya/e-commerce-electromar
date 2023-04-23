@@ -5,7 +5,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
-import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
