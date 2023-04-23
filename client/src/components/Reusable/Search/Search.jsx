@@ -1,8 +1,7 @@
 import classes from "../reuse.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { useState } from "react";
+
 
 const Search = () => {
 
