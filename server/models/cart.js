@@ -6,20 +6,21 @@ const cartSchema = new Schema({
         type: String,
     },
     items: [{
-        productId: {
-            type: String,
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
         },
         quantity: {
             type: Number,
             required: true,
             min: [1, 'Product quantity must be greater than 0.'],
             default: 1
-        },
-        price: Number
+        }
     }],
     total: {
         type: Number,
         required: true,
+        min: [0, 'Cart total cannot be less than 0.'],
         default: 0
     }
 });
