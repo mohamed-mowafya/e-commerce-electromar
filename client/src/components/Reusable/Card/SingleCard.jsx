@@ -3,12 +3,6 @@ import reuseClasses from "../../../components/Reusable/reuse.module.css";
 import { useEffect } from "react";
 
 const Card = (props) =>{
-
-    useEffect(()=>{
-        console.log(props.product)
-        debugger;
-    },[])
-
     const buildImageUrl = (fileName) => {
         return `http://localhost:5000/file/${fileName}`;
     }

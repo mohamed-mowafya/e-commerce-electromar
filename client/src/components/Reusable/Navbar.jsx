@@ -5,6 +5,7 @@ import "primeicons/primeicons.css";
 import "./bootstrap_modif.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import Search from "./Search/Search";
 
 const Navbar = () => {
   const authenticated = useSelector(({ user }) => user.authenticated);
@@ -44,19 +45,7 @@ const Navbar = () => {
               {authenticated && <bar.auth.MyCart />}
               {!authenticated && <bar.notAuth.MyCart />}
             </ul>
-
-            <form className={`d-flex  ${classes.searchForm} me-4`}>
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder=" Search for a product"
-                aria-label="Search"
-              />
-              <button className={`btn ${classes.searchBtn}`} type="submit">
-                <i className="pi pi-search" />
-              </button>
-            </form>
-
+           <Search/>
             {authenticated && (
               <div className={`${classes.cart}`}>
                 <i
