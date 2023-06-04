@@ -11,6 +11,7 @@ import Footer from "./components/Reusable/Footer";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import HomePage from "./components/Home/HomePage/HomePage";
 import Products from "./components/Products/Products";
+import Cart from "./components/Cart/cart";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="settings" element={<ProfileSettings />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
+          <Route path="cart" element={<Cart />} />
         </Routes>
      
       </Router>
