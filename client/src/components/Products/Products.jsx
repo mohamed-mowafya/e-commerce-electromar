@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react"
 import ProductPageCards from "../Product/ProductPageCards/ProcuctPageCards"
 import axios from "axios";
 import { useSelector } from "react-redux";
+import useAuth from "../hooks/useAuth";
 
 const Products = () => {
+    useAuth();
 
     const [productsArr, setProductsArr] = useState([]);
     const productSearch = useSelector(({ user }) => user.search);

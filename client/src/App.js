@@ -7,11 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./components/Login/LoginPage/LoginPage";
 import SignUpPage from "./components/SignUp/SignUpPage/SignUpPage";
 import ProfilePage from "./components/Profile/ProfilePage/ProfilePage";
-import Footer from "./components/Reusable/Footer";
+// import Footer from "./components/Reusable/Footer";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import HomePage from "./components/Home/HomePage/HomePage";
 import Products from "./components/Products/Products";
-import Cart from "./components/Cart/cart";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
