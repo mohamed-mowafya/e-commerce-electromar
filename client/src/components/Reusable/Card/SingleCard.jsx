@@ -1,6 +1,7 @@
 import "../../Product/product_card.css"
 import reuseClasses from "../../../components/Reusable/reuse.module.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Card = (props) => {
     const buildImageUrl = (fileName) => {
@@ -13,7 +14,18 @@ const Card = (props) => {
 
         axios.post("http://localhost:5000/cart", { productId, quantity },
         { withCredentials: true }
-        );
+        ).then(()=> {
+            toast.success("Item added from cart", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        });
     }
             
 

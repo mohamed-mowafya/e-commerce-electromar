@@ -23,9 +23,6 @@ const useAuth = (redirect, protectedRoute) => {
   const isAuth = async () => {
     const res = await axios
       .get("http://localhost:5000/isauth", { withCredentials: true })
-      .catch(() => {
-        return 400;
-      });
 
     return res;
   };
@@ -33,10 +30,13 @@ const useAuth = (redirect, protectedRoute) => {
 
   const handleAuth = (authRes) => {
     if (authRes.status === 200) {
-      if (!protectedRoute) {
         dispatchAuth();
         dispatchEmail(authRes.data.email);
         if (redirect) navigate("/");
+    }
+    else {
+      if (protectedRoute) {
+        navigate("/login");
       }
     }
   }

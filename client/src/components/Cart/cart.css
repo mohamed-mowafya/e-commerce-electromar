@@ -1,8 +1,7 @@
 
 h3 {
     color: black;
-    margin-left: 1%;
-    margin-top: 2%;
+    margin-right: 19.5em;
 }
 
 hr {
@@ -16,11 +15,40 @@ hr {
     color: black;
     margin-top: 1em;
     margin-left: 6em;
+    margin-bottom: 0.5em;
 }
 
 .page-container {
     display: flex;
+    justify-content: space-between;
+}
+
+.logo-msg-container {
+    display: flex;
+}
+
+.logo-msg {
+    color: black;
+    font-size: 18px;
+    overflow: auto;
+    font-weight: 600;
+    margin-left: 0.5em;
+    margin-top: 0.2em;
+    width: 8em;
+}
+
+.empty-footer-container {
+    margin-top: 2em;
     flex-direction: row;
+    margin-left: 25em;
+    gap: 5em;
+}
+
+.empty-footer-container i {
+    display: flex;
+    color: red;
+    font-size: 35px;
+    margin-right: 0.2em;
 }
 
 
@@ -114,6 +142,7 @@ hr {
     color: black;
 }
 
+
 .cart-item-footer button {
     width: 1.3em;
     margin-top: 1em;
@@ -132,6 +161,30 @@ hr {
     vertical-align: middle;
 }
 
+.empty-cart-logo {
+    align-self: flex-end !important;
+}
+
+.empty-cart-logo i {
+    color: red;
+    font-size: 100px;
+    margin-right: 4em;
+}
+
+.empty-cart-title {
+    color: black !important;
+    font-size: 1.2em !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5em !important;
+    margin-left: 7.5em !important;
+}
+
+.empty-cart span {
+    color: black !important;
+    font-size: 1em;
+    margin-left: 9.1em;
+}
+
 .pi-minus, .pi-plus {
     text-align: center;
     font-size: 0.5em;
@@ -148,6 +201,8 @@ hr {
     font-weight: 500;
     margin-top: -1em;
     margin-left: 0.2em;
+    color:blue; 
+    cursor:pointer; 
 }
 
 
@@ -161,4 +216,9 @@ hr {
 .product-total span:nth-child(2) {
     margin-left: 29em;
     font-weight: bold;
+    flex: auto;
+    display: flex;
+    justify-content: end;
+    margin-right: 1.6em;
+
 }
