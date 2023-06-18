@@ -2,13 +2,27 @@ import "../../Product/product_card.css"
 import reuseClasses from "../../../components/Reusable/reuse.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const Card = (props) => {
+    const authenticated = useSelector(({ user }) => user.authenticated);
+
     const buildImageUrl = (fileName) => {
         return `http://localhost:5000/file/${fileName}`;
     }
 
     const handleAddToCart = async () => {
+        if (!authenticated) toast.error("You must be logged in to add items to cart", 
+        {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
         const productId = props.product._id;
         const quantity = 1; // To be changed when we add quantity input functionality.
 
