@@ -4,6 +4,7 @@ import axios from "axios";
 import CartItem from "./CartItem";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import Stripe from "../Stripe/Stripe";
 
 const Cart = () => {
     useAuth(null, true);
@@ -129,7 +130,7 @@ const Cart = () => {
     const paymentSection = () => {
         return (
             <>
-                <h3>Order summary</h3>
+                <Stripe cart={cart}/>
             </>
         )
     }

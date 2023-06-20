@@ -37,7 +37,7 @@ const Product = (props) => {
         <React.Fragment>
             {props.products &&
                 <div className="ms-auto me-auto">
-                    <h3 className={`${reuseClasses.productText} text-dark mt-5 text-center mb-5 pb-1`}>Featured Products</h3>
+                    <h3 className={`${reuseClasses.productText} text-dark mt-5 text-center mb-5 pb-1 ms-auto me-auto`}>Featured Products</h3>
                     <div className="wrapper">
                         <Splide
                             options={{

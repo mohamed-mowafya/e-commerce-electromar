@@ -16,6 +16,7 @@ const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const fileRoutes = require("./routes/fileRoutes");
+const stripeRoutes = require("./routes/stripeRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -60,7 +61,8 @@ app.use("/", authRoutes);
 app.use("/", productRoutes);
 app.use("/", orderRoutes);
 app.use("/", cartRoutes);
-app.use("/", fileRoutes)
+app.use("/", fileRoutes);
+app.use("/", stripeRoutes);
 
 //// -------------- END OF ROUTES------------------------------------------------//
 app.listen(process.env.PORT, () => {
