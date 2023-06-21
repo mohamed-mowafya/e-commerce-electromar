@@ -24,7 +24,8 @@
     "multer": "^1.4.4",
     "nodemon": "^2.0.18",
     "passport": "^0.5.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "stripe": "^12.9.0"
   },
   "main": "app.js",
   "author": "",

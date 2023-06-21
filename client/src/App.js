@@ -7,10 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./components/Login/LoginPage/LoginPage";
 import SignUpPage from "./components/SignUp/SignUpPage/SignUpPage";
 import ProfilePage from "./components/Profile/ProfilePage/ProfilePage";
-import Footer from "./components/Reusable/Footer";
+// import Footer from "./components/Reusable/Footer";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import HomePage from "./components/Home/HomePage/HomePage";
 import Products from "./components/Products/Products";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
@@ -20,13 +21,13 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="products" element={<Products/>}/>
+          <Route path="products" element={<Products />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="settings" element={<ProfileSettings />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
+          <Route path="cart" element={<Cart />} />
         </Routes>
-     
       </Router>
     </React.Fragment>
   );

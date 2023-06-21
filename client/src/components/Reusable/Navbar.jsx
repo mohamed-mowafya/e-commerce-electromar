@@ -45,14 +45,14 @@ const Navbar = () => {
               {authenticated && <bar.auth.MyCart />}
               {!authenticated && <bar.notAuth.MyCart />}
             </ul>
-           <Search/>
+            <Search />
             {authenticated && (
               <div className={`${classes.cart}`}>
                 <i
                   style={{ color: "red" }}
                   className={`pi pi-shopping-cart ${classes.cartLogo}`}
                 ></i>
-                <Link className={`${classes.link} ps-4`} to="profile">
+                <Link className={`${classes.link} ps-4`} to="cart">
                   My Cart
                 </Link>
               </div>
@@ -135,7 +135,7 @@ const bar = {
           </li>
           <div className={classes.mobileCart}>
             <li className={`d-flex ${classes.navLink} `}>
-              <Link className={classes.link} to="profile">
+              <Link className={classes.link} to="cart">
                 My Cart
               </Link>
             </li>

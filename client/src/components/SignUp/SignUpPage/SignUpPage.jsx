@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "../../Login/LoginPage/loginPage.module.css";
-
-import SignUp from "../SignupForm/Signup";
+import SignUpForm from "../SignupForm/SignUpForm";
 
 const SignUpPage = () => {
   return (
@@ -11,7 +10,7 @@ const SignUpPage = () => {
         <div className="row">
           <div className="col-lg-6">
             <h1 className={`mb-4 ${classes.loginTitle}`}>Create an account</h1>
-            <SignUp />
+            <SignUpForm />
           </div>
           <div className="col-lg-6 my-5">
             <p style={{ color: "black" }}>

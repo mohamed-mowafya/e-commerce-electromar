@@ -16,17 +16,20 @@ const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const fileRoutes = require("./routes/fileRoutes");
+const stripeRoutes = require("./routes/stripeRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
-mongoose.connect("mongodb://mongo:27017/ecom", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose
+  .connect(process.env.MONGO_URI, {
+    // Set to "mongodb://mongo:27017/ecom" for docker
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log("Connected to MongoDB");
   })
   .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
+    console.error("Error connecting to MongoDB:", error);
   });
 
 app.use(bodyParser.json());
@@ -60,7 +63,8 @@ app.use("/", authRoutes);
 app.use("/", productRoutes);
 app.use("/", orderRoutes);
 app.use("/", cartRoutes);
-app.use("/", fileRoutes)
+app.use("/", fileRoutes);
+app.use("/", stripeRoutes);
 
 //// -------------- END OF ROUTES------------------------------------------------//
 app.listen(process.env.PORT, () => {
