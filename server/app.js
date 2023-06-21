@@ -21,6 +21,7 @@ const stripeRoutes = require("./routes/stripeRoutes");
 
 mongoose
   .connect(process.env.MONGO_URI, {
+    // Set to "mongodb://mongo:27017/ecom" for docker
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

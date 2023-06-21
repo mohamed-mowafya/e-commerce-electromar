@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  client:
+    image: node:20-alpine3.16
+    volumes:
+      - ./client:/client
+    working_dir: /client
+    command: sh -c "npm install && npm run start"
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+      - server
+
+  server:
+    image: node:20-alpine3.16
+    volumes:
+      - ./server:/server
+    working_dir: /server
+    command: sh -c "npm install && npm run start"
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7.0.0-rc2
+    restart: always
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
