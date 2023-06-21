@@ -9,14 +9,20 @@ import Stripe from "../Stripe/Stripe";
 const Cart = () => {
   useAuth(null, true);
   const [cart, setCart] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    getCart();
+  }, []);
+
+  const getCart = () => {
     axios
       .get("http://localhost:5000/cart", { withCredentials: true })
       .then((response) => {
         setCart(response.data);
+        setIsLoading(false); // This is to prevent the cart from rendering before the data is fetched.
       });
-  }, []);
+  };
 
   const handleQuantityChange = (action, productId) => {
     if (action === "ADD") {
@@ -141,16 +147,22 @@ const Cart = () => {
   const cartSection = () => {
     return (
       <>
-        <h1 className="cart-title">Your Cart</h1>
-        <div className="page-container">
-          {cart && cart.items.length > 0 ? cartDisplay() : emptyCartDisplay()}
-        </div>
-        {!cart || (cart && !cart.items.length > 0) ? (
-          <>
-            {" "}
-            <hr /> {emptyCartFooter()}{" "}
-          </>
-        ) : null}
+        {!isLoading && (
+          <div>
+            <h1 className="cart-title">Your Cart</h1>
+            <div className="page-container">
+              {cart && cart.items.length > 0
+                ? cartDisplay()
+                : emptyCartDisplay()}
+            </div>
+            {!cart || (cart && !cart.items.length > 0) ? (
+              <>
+                {" "}
+                <hr /> {emptyCartFooter()}{" "}
+              </>
+            ) : null}
+          </div>
+        )}
       </>
     );
   };
@@ -158,7 +170,7 @@ const Cart = () => {
   const paymentSection = () => {
     return (
       <>
-        <Stripe cart={cart} />
+        <Stripe setCart={setCart} cart={cart} />
       </>
     );
   };

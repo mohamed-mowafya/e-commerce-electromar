@@ -6,10 +6,9 @@ import CheckoutForm from "./StripeCheckoutForm";
 import "./stripe.css";
 import axios from "axios";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
-
-const Stripe = ({ cart }) => {
+const Stripe = ({ cart, setCart }) => {
   const [clientSecret, setClientSecret] = useState("");
+  const [stripePromise, setStripePromise] = useState(null);
 
   useEffect(() => {
     axios
@@ -21,6 +20,7 @@ const Stripe = ({ cart }) => {
       .then((data) => {
         debugger;
         setClientSecret(data.data.clientSecret);
+        setStripePromise(loadStripe(process.env.REACT_APP_STRIPE_API_KEY));
       });
   }, []);
 
@@ -32,12 +32,11 @@ const Stripe = ({ cart }) => {
     clientSecret,
     appearance,
   };
-  debugger;
   return (
     <>
-      {clientSecret && (
+      {clientSecret && stripePromise && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm setCart={setCart} />
         </Elements>
       )}
     </>

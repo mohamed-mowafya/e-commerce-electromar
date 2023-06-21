@@ -139,4 +139,4 @@ const removeFromCart = async (req, res) => {
   }
 };
 
-module.exports = { removeFromCart, addToCart, getCart };
+module.exports = { removeFromCart, addToCart, getCart, emptyCart };
