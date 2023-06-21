@@ -9,36 +9,39 @@ import axios from "axios";
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
 const Stripe = ({ cart }) => {
-    const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
 
-    useEffect(() => {
-        const headers = {
-            Authorization: `Bearer ${process.env.REACT_APP_STRIPE_API_KEY}`
-          };
-          
-        axios.post(`${process.env.REACT_APP_API_URL}create-payment-intent`, { cart }, { headers, withCredentials: true }) //
-            .then((res) => res.json())
-            .then((data) => setClientSecret(data.clientSecret));
-    }, []);
+  useEffect(() => {
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}create-payment-intent`,
+        { cart },
+        { withCredentials: true }
+      )
+      .then((data) => {
+        debugger;
+        setClientSecret(data.data.clientSecret);
+      });
+  }, []);
 
-    const appearance = {
-        theme: 'stripe',
-    };
-    const options = {
-        clientSecret,
-        appearance,
-    };
-
-    return (
-        <>
-            {clientSecret && (
-                <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm />
-                </Elements>
-            )}
-        </>
-    );
-
-}
+  const appearance = {
+    theme: "stripe",
+    labels: "floating",
+  };
+  const options = {
+    clientSecret,
+    appearance,
+  };
+  debugger;
+  return (
+    <>
+      {clientSecret && (
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      )}
+    </>
+  );
+};
 
 export default Stripe;

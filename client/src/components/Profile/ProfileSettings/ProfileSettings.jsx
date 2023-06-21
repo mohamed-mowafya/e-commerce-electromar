@@ -17,12 +17,12 @@ const ProfileSettings = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
-  const email = useSelector(({user}) => user.email);
+  const email = useSelector(({ user }) => user.email);
   const [userIdentity, setUserIdentity] = useState(null);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setUserIdentity(email);
-  },[email])
+  }, [email]);
 
   useEffect(() => {
     if (confirmNewPassword !== newPassword && confirmNewPassword.length > 0) {
@@ -58,7 +58,7 @@ const ProfileSettings = () => {
         navigate("/login");
       })
 
-      .catch((e)=> {
+      .catch((e) => {
         toast.error("An error has occured: " + e.response.data.status, {
           position: "top-right",
           autoClose: 2000,
@@ -69,7 +69,7 @@ const ProfileSettings = () => {
           progress: undefined,
           theme: "dark",
         });
-      })
+      });
   };
 
   const handleSubmit = (event) => {

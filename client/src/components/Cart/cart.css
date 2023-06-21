@@ -1,224 +1,220 @@
-
 h3 {
-    color: black;
-    margin-right: 19.5em;
+  color: black;
+  margin-right: 19.5em;
 }
 
 hr {
-    color: #1301015d !important;
-    height: 50em;
+  color: #1301015d !important;
+  height: 50em;
 }
 
 .cart-title {
-    font-size: 24px;
-    line-height: 32px;
-    color: black;
-    margin-top: 1em;
-    margin-left: 6em;
-    margin-bottom: 0.5em;
+  font-size: 24px;
+  line-height: 32px;
+  color: black;
+  margin-top: 1em;
+  margin-left: 6em;
+  margin-bottom: 0.5em;
 }
 
 .page-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo-msg-container {
-    display: flex;
+  display: flex;
 }
 
 .logo-msg {
-    color: black;
-    font-size: 18px;
-    overflow: auto;
-    font-weight: 600;
-    margin-left: 0.5em;
-    margin-top: 0.2em;
-    width: 8em;
+  color: black;
+  font-size: 18px;
+  overflow: auto;
+  font-weight: 600;
+  margin-left: 0.5em;
+  margin-top: 0.2em;
+  width: 8em;
 }
 
 .empty-footer-container {
-    margin-top: 2em;
-    flex-direction: row;
-    margin-left: 25em;
-    gap: 5em;
+  margin-top: 2em;
+  flex-direction: row;
+  margin-left: 25em;
+  gap: 5em;
 }
 
 .empty-footer-container i {
-    display: flex;
-    color: red;
-    font-size: 35px;
-    margin-right: 0.2em;
+  display: flex;
+  color: red;
+  font-size: 35px;
+  margin-right: 0.2em;
 }
 
-
 .cart-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2em;
-    background-color: #f4f6f9;
-    padding-bottom: 35em;
-    width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  background-color: #f4f6f9;
+  padding-bottom: 35em;
+  width: 60%;
 }
 
 .title-container {
-    margin-left: 17.5em;
-    font-family: Human BBY ,Arial,sans-serif;
+  margin-left: 17.5em;
+  font-family: Human BBY, Arial, sans-serif;
 }
 
 .cart-container p {
-    margin-top: 2em;
-    margin-left: 0.5em;
+  margin-top: 2em;
+  margin-left: 0.5em;
 }
 
 .cart-container p strong {
-    color: black !important;
+  color: black !important;
 }
 
 .electromar-title {
-    font-size: 16.2px !important;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: black;
+  font-size: 16.2px !important;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: black;
 }
 
 .cart-item-container {
-    background-color: white;
-    height: 350px;
-    border: 1px solid #1301012f;
-    border-radius: 5px;
-    width: 50em;
-    margin-left: 18em;
+  background-color: white;
+  height: 350px;
+  border: 1px solid #1301012f;
+  border-radius: 5px;
+  width: 50em;
+  margin-left: 18em;
 }
 
 .cart-item {
-    display: flex;
-    width: 100% !important;
-    justify-content: start;
+  display: flex;
+  width: 100% !important;
+  justify-content: start;
 }
 
 .cart-item span {
-    color: black;
+  color: black;
 }
 
 .cart-item-title {
-    margin-top: 1.5em;
-    margin-left: 1em;
-    font-size: 15px;
-    line-height: 30px;
-    font-family: Human BBY ,Arial,sans-serif;
+  margin-top: 1.5em;
+  margin-left: 1em;
+  font-size: 15px;
+  line-height: 30px;
+  font-family: Human BBY, Arial, sans-serif;
 }
 
 .cart-item-img-container img {
-    height: 110px;
-    width: 95px;
-    margin-top: 2em;
-    margin-left: 1.5em;
+  height: 110px;
+  width: 95px;
+  margin-top: 2em;
+  margin-left: 1.5em;
 }
 
 .cart-item-price {
-    margin-top: 1.5em;
-    font-weight: bold;
-    padding-right: 1em;
-    justify-content: end;
-    margin-right: 0.8em;
-    flex: auto;
-    display: flex;
+  margin-top: 1.5em;
+  font-weight: bold;
+  padding-right: 1em;
+  justify-content: end;
+  margin-right: 0.8em;
+  flex: auto;
+  display: flex;
 }
 
 .cart-item-footer {
-    display: flex;
-    flex-direction: column;
-    margin-left: 8.5em;
+  display: flex;
+  flex-direction: column;
+  margin-left: 8.5em;
 }
 
 .cart-item-footer span i {
-    margin-top: 2em;
-    font-size: 0.8em;
-    color: green;
-    margin-right: 0.6em;
+  margin-top: 2em;
+  font-size: 0.8em;
+  color: green;
+  margin-right: 0.6em;
 }
 
 .cart-item-footer span {
-    color: black;
+  color: black;
 }
 
-
 .cart-item-footer button {
-    width: 1.3em;
-    margin-top: 1em;
-    border-radius: 30px;
-    height: 1.3em;
-    padding: 0 !important;
+  width: 1.3em;
+  margin-top: 1em;
+  border-radius: 30px;
+  height: 1.3em;
+  padding: 0 !important;
 }
 
 .cart-item-footer div p {
-    margin-top: 1.3em;
-    margin-left: 2em;
-    margin-right: 2em;
-    font-size: 0.8em;
-    color: black;
-    font-weight: bold;
-    vertical-align: middle;
+  margin-top: 1.3em;
+  margin-left: 2em;
+  margin-right: 2em;
+  font-size: 0.8em;
+  color: black;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
 .empty-cart-logo {
-    align-self: flex-end !important;
+  align-self: flex-end !important;
 }
 
 .empty-cart-logo i {
-    color: red;
-    font-size: 100px;
-    margin-right: 4em;
+  color: red;
+  font-size: 100px;
+  margin-right: 4em;
 }
 
 .empty-cart-title {
-    color: black !important;
-    font-size: 1.2em !important;
-    font-weight: 500 !important;
-    margin-bottom: 0.5em !important;
-    margin-left: 7.5em !important;
+  color: black !important;
+  font-size: 1.2em !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5em !important;
+  margin-left: 7.5em !important;
 }
 
 .empty-cart span {
-    color: black !important;
-    font-size: 1em;
-    margin-left: 9.1em;
+  color: black !important;
+  font-size: 1em;
+  margin-left: 9.1em;
 }
 
-.pi-minus, .pi-plus {
-    text-align: center;
-    font-size: 0.5em;
-    padding-bottom: 1em;
-    vertical-align: middle;
+.pi-minus,
+.pi-plus {
+  text-align: center;
+  font-size: 0.5em;
+  padding-bottom: 1em;
+  vertical-align: middle;
 }
 
 .pi-trash {
-    margin: 0;
-    color: red !important;
+  margin: 0;
+  color: red !important;
 }
 
 .remove-txt {
-    font-weight: 500;
-    margin-top: -1em;
-    margin-left: 0.2em;
-    color:blue; 
-    cursor:pointer; 
+  font-weight: 500;
+  margin-top: -1em;
+  margin-left: 0.2em;
+  color: blue;
+  cursor: pointer;
 }
 
-
 .product-total span {
-    color: black;
-    font-weight: 500;
-    margin-left: 8.8em;
-    line-height: 40px;
+  color: black;
+  font-weight: 500;
+  margin-left: 8.8em;
+  line-height: 40px;
 }
 
 .product-total span:nth-child(2) {
-    margin-left: 29em;
-    font-weight: bold;
-    flex: auto;
-    display: flex;
-    justify-content: end;
-    margin-right: 1.6em;
-
+  margin-left: 29em;
+  font-weight: bold;
+  flex: auto;
+  display: flex;
+  justify-content: end;
+  margin-right: 1.6em;
 }

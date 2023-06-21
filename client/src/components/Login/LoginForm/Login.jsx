@@ -3,7 +3,7 @@ import classes from "./login.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import useAuth  from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -11,7 +11,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const dispatchEmail = (email) => dispatch({ type: "SET_EMAIL", payload: email });
+  const dispatchEmail = (email) =>
+    dispatch({ type: "SET_EMAIL", payload: email });
 
   const [password, setPassword] = useState("");
 
@@ -41,7 +42,7 @@ const Login = () => {
         });
         dispatchEmail(email);
         dispatch({ type: "SET_AUTHENTICATED", payload: true });
-        navigate("/")
+        navigate("/");
       })
       .catch(() => {
         toast.dismiss();

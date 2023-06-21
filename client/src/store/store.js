@@ -12,7 +12,7 @@ const userReducer = (state = userState, action) => {
     case "SET_EMAIL":
       return { ...state, email: action.payload };
     case "SEARCH":
-      return {...state, search: action.payload}
+      return { ...state, search: action.payload };
     default:
       return state;
   }

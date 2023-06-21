@@ -1,10 +1,10 @@
-const { dirname } = require('path');
+const { dirname } = require("path");
 
-const getFile = (req, res) =>{
-    const appDir = dirname(require.main.filename);
+const getFile = (req, res) => {
+  const appDir = dirname(require.main.filename);
 
-    const filePath = appDir + '/images/' + req.params.fileName;
-    res.sendFile(filePath)
-}
+  const filePath = appDir + "/images/" + req.params.fileName;
+  res.sendFile(filePath);
+};
 
-module.exports = {getFile}
+module.exports = { getFile };

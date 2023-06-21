@@ -21,14 +21,13 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="products" element={<Products/>}/>
+          <Route path="products" element={<Products />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="settings" element={<ProfileSettings />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
           <Route path="cart" element={<Cart />} />
         </Routes>
-     
       </Router>
     </React.Fragment>
   );

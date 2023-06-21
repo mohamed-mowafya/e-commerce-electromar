@@ -4,24 +4,26 @@ const localStrategy = require("passport-local").Strategy;
 
 module.exports = function (passport) {
   passport.use(
-    new localStrategy({
-      usernameField: "email",
-      passwordField: "password"
-    },
+    new localStrategy(
+      {
+        usernameField: "email",
+        passwordField: "password",
+      },
       (username, password, done) => {
-      User.findOne({ email: username }, (err, user) => {
-        if (err) throw err;
-        if (!user) return done(null, false);
-        bcrypt.compare(password, user.password, (err, result) => {
+        User.findOne({ email: username }, (err, user) => {
           if (err) throw err;
-          if (result === true) {
-            return done(null, user);
-          } else {
-            return done(null, false);
-          }
+          if (!user) return done(null, false);
+          bcrypt.compare(password, user.password, (err, result) => {
+            if (err) throw err;
+            if (result === true) {
+              return done(null, user);
+            } else {
+              return done(null, false);
+            }
+          });
         });
-      });
-    })
+      }
+    )
   );
 
   passport.serializeUser((user, cb) => {
@@ -31,7 +33,7 @@ module.exports = function (passport) {
     User.findOne({ _id: id }, (err, user) => {
       const userInformation = {
         email: user.email,
-        id: user.id
+        id: user.id,
       };
       cb(err, userInformation);
     });

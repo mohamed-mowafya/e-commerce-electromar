@@ -8,7 +8,6 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-
   useAuth(true);
   const navigate = useNavigate();
 
@@ -26,24 +25,25 @@ const SignUp = () => {
     if (confirmPass !== password && confirmPass) {
       setShowPassError(true);
     } else {
-      await axios.post("http://localhost:5000/register", {
-        email,
-        password,
-        admin: false, // Users don't have admin access by default.
-      }).then(() => {
-        toast.success("Welcome, please sign in with your new account.", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        }
-        )
-      })
-      navigate("/login")
+      await axios
+        .post("http://localhost:5000/register", {
+          email,
+          password,
+          admin: false, // Users don't have admin access by default.
+        })
+        .then(() => {
+          toast.success("Welcome, please sign in with your new account.", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        });
+      navigate("/login");
 
       setShowPassError(false);
     }

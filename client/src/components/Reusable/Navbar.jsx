@@ -45,7 +45,7 @@ const Navbar = () => {
               {authenticated && <bar.auth.MyCart />}
               {!authenticated && <bar.notAuth.MyCart />}
             </ul>
-           <Search/>
+            <Search />
             {authenticated && (
               <div className={`${classes.cart}`}>
                 <i
