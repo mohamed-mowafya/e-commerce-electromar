@@ -4,6 +4,17 @@
   margin-top: 1%;
 }
 
+.disabledCursor {
+  cursor: default;
+  text-decoration: none;
+  color: gray;
+  
+}
+
+.disabledCursor:hover {
+  color: gray;
+}
+
 .bottomSpacing {
   padding-bottom: 0;
 }

@@ -19,6 +19,9 @@
 .productTitle {
   font-size: 18px;
   color: gray;
+}
+
+.descHeight {
   min-height: 80px;
 }
 
@@ -105,7 +108,11 @@
 }
 @media (max-width: 800px) {
   .productTitle {
-    min-height: 0px;
+    font-size: 18px;
+    color: gray;
+  }
+  .descHeight {
+    min-height: 80px;
   }
   .productText {
     font-size: 24px !important;

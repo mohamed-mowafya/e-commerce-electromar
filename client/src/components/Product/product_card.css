@@ -17,6 +17,10 @@ img.card-img-top {
   width: 9.5em;
 }
 
+.product-footer {
+  align-self: flex-start;
+}
+
 .splide__arrow {
   background: none !important;
   top: 35% !important;

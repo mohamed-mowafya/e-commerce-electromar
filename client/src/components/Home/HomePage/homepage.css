@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 768px) {
   .carousel-item {
-    height: 180px;
+    height: 170px;
   }
   .carousel-control-prev-icon {
     display: none !important;
@@ -19,8 +19,8 @@
   }
 
   .carousel-item img {
-    height: 180px;
     object-fit: cover;
+    height:160px;
   }
   .btn {
     font-size: 0.7rem !important;

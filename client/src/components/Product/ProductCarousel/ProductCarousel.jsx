@@ -51,6 +51,7 @@ const Product = (props) => {
                 return (
                   <SplideSlide>
                     <SingleCard
+                      home={props.home}
                       product={product}
                       extraBodyClass="desc-width-home"
                     />
