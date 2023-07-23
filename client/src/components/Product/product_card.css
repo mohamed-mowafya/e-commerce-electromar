@@ -4,8 +4,14 @@
 }
 
 img.card-img-top {
-  height: 200px !important;
-  width: 100% !important;
+  height: 11.8em !important;
+  width: 10em !important;
+  object-fit: contain;
+}
+
+.img-card-products-page {
+  height: 4em !important;
+  width: 8.5em !important;
   object-fit: contain;
 }
 
@@ -31,6 +37,18 @@ img.card-img-top {
 }
 
 @media screen and (max-width: 768px) {
+  .products-page-desc {
+    min-height: 2px !important;
+  }
+  .img-card-products-page {
+    height: 4em !important;
+    width: 8.5em !important;
+    object-fit: contain;
+  }
+  
+  .products-page-width {
+    width: 6.2em !important;
+  }
   .splide__arrow {
     display: none;
   }

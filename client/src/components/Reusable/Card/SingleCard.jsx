@@ -67,9 +67,9 @@ const Card = (props) => {
             <p className={`text-dark mb-0`}>{props.product.price}$</p>
           </b>
           <p
-            className={`${props.home ? reuseClasses.descHeight : ""} ${
+            className={`${reuseClasses.descHeight} ${
               reuseClasses.productTitle
-            } pb-0`}
+            } pb-0 ${props.extraClass ? props.extraClass : ""}`}
           >
             {props.product.name}
           </p>
