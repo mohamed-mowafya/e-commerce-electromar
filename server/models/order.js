@@ -2,30 +2,33 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-const orderSchema = new Schema({
-  userId: {
-    type: String,
-  },
-  orderNo: {
-    type: Number,
-  },
-  items: [
-    {
-      productId: {
-        type: String,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-        min: [1, "Product quantity needs be greater than 0."],
-      },
-      price: Number,
+const orderSchema = new Schema(
+  {
+    userId: {
+      type: String,
     },
-  ],
-  total: {
-    type: Number,
-    required: true,
+    orderNo: {
+      type: Number,
+    },
+    items: [
+      {
+        productId: {
+          type: String,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          min: [1, "Product quantity needs be greater than 0."],
+        },
+        price: Number,
+      },
+    ],
+    total: {
+      type: Number,
+      required: true,
+    },
   },
-});
+  { timestamps: { createdAt: "created_at" } }
+);
 
 module.exports = mongoose.model("Order", orderSchema);
