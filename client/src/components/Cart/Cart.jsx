@@ -111,35 +111,39 @@ const Cart = () => {
   const cartDisplay = () => {
     return (
       <>
-        <div className="cart-container">
-          <div className="d-flex title-container">
-            <p className="electromar-title">
-              ElectroMar<span style={{ color: "red" }}>.</span>
-            </p>
-            <p>
-              <strong>Sold and shipped by ElectroMar</strong>
-            </p>
+        <div className="d-flex justify-content-between gap-2 mobile-cart-container cart-page">
+          <div className="cart-container">
+            <div className="d-flex title-container">
+              <p className="electromar-title">
+                ElectroMar<span style={{ color: "red" }}>.</span>
+              </p>
+              <p>
+                <strong>Sold and shipped by ElectroMar</strong>
+              </p>
+            </div>
+            {cart &&
+              cart.items.length > 0 &&
+              cart.items.map((item) => {
+                const { name, price, image, _id } = item.product;
+                return (
+                  <div className="mb-2 me-4">
+                    <CartItem
+                      productId={_id}
+                      handleQuantityChange={handleQuantityChange}
+                      name={name}
+                      price={price}
+                      quantity={item.quantity}
+                      imgName={image.fileName}
+                      productTotal={
+                        Math.round(price * item.quantity * 100) / 100
+                      }
+                    />
+                  </div>
+                );
+              })}
           </div>
-          {cart &&
-            cart.items.length > 0 &&
-            cart.items.map((item) => {
-              const { name, price, image, _id } = item.product;
-              return (
-                <div className="mb-2">
-                  <CartItem
-                    productId={_id}
-                    handleQuantityChange={handleQuantityChange}
-                    name={name}
-                    price={price}
-                    quantity={item.quantity}
-                    imgName={image.fileName}
-                    productTotal={Math.round(price * item.quantity * 100) / 100}
-                  />
-                </div>
-              );
-            })}
+          {paymentSection()}
         </div>
-        {paymentSection()}
       </>
     );
   };
