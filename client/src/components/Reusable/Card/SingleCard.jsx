@@ -66,7 +66,11 @@ const Card = (props) => {
           <b>
             <p className={`text-dark mb-0`}>{props.product.price}$</p>
           </b>
-          <p className={`${reuseClasses.productTitle} pb-0`}>
+          <p
+            className={`${reuseClasses.descHeight} ${
+              reuseClasses.productTitle
+            } pb-0 ${props.extraClass ? props.extraClass : ""}`}
+          >
             {props.product.name}
           </p>
         </div>

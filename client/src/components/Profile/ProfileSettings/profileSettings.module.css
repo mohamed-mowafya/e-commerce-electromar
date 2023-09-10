@@ -1,5 +1,13 @@
 .formDivWidth {
-  width: 25%;
+  width: 25em;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 800px) {
+  .formDivWidth {
+    width: 22em;
+    font-size: 14px;
+    color: gray;
+  }
 }

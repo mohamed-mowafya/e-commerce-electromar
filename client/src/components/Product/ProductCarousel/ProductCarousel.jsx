@@ -33,7 +33,7 @@ const Product = (props) => {
       {props.products && (
         <div className="ms-auto me-auto">
           <h3
-            className={`${reuseClasses.productText} text-dark mt-5 text-center mb-5 pb-1 ms-auto me-auto`}
+            className={`${reuseClasses.productText} text-dark mt-3 text-center mb-5 pb-1 ms-auto me-auto`}
           >
             Featured Products
           </h3>
@@ -51,6 +51,7 @@ const Product = (props) => {
                 return (
                   <SplideSlide>
                     <SingleCard
+                      home={props.home}
                       product={product}
                       extraBodyClass="desc-width-home"
                     />

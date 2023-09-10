@@ -16,7 +16,7 @@ const CartItem = ({
         <div className="cart-item">
           <div className="cart-item-img-container">
             <img
-              crossorigin="anonymous"
+              crossOrigin="anonymous"
               src={`http://localhost:5000/file/${imgName}`}
             />
           </div>
