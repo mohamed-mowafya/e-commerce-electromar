@@ -75,11 +75,12 @@ const Cart = () => {
     return (
       <>
         <div className="d-flex flex-column justify-content-center empty-cart">
+          <h1 className="cart-title">Your Cart</h1>
           <span className="empty-cart-title">Looks like it's empty!</span>
           <span>Why not add something?</span>
         </div>
-        <div class="d-flex empty-cart-logo">
-          <i class="pi pi-shopping-cart"></i>
+        <div className="d-flex empty-cart-logo">
+          <i className="pi pi-shopping-cart"></i>
         </div>
       </>
     );
@@ -153,7 +154,9 @@ const Cart = () => {
       <>
         {!isLoading && (
           <div>
-            <h1 className="cart-title">Your Cart</h1>
+            {cart && cart.items.length > 0 && (
+              <h1 className="cart-title">Your Cart</h1>
+            )}
             <div className="page-container">
               {cart && cart.items.length > 0
                 ? cartDisplay()

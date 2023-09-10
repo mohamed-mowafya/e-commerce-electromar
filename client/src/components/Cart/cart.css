@@ -13,8 +13,8 @@ hr {
   line-height: 32px;
   color: black;
   margin-top: 1em;
-  margin-left: 5.5em;
-  margin-bottom: 0;
+  margin-left: 5.8em;
+  margin-bottom: 1em;
 }
 
 .page-container {
@@ -39,7 +39,7 @@ hr {
 .empty-footer-container {
   margin-top: 2em;
   flex-direction: row;
-  margin-left: 25em;
+  justify-content: center;
   gap: 5em;
 }
 
@@ -164,7 +164,7 @@ hr {
 .empty-cart-logo i {
   color: red;
   font-size: 100px;
-  margin-right: 4em;
+  margin-right: 1em;
 }
 
 .empty-cart-title {
@@ -178,7 +178,7 @@ hr {
 .empty-cart span {
   color: black !important;
   font-size: 1em;
-  margin-left: 9.1em;
+  margin-left: 9em;
 }
 
 .pi-minus,
@@ -241,7 +241,10 @@ hr {
   }
 
   .empty-footer-container {
-    margin-left: 2em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
   }
 
   .cart-item-container {
@@ -287,6 +290,9 @@ hr {
     flex-direction: column !important;
     justify-content: center;
     margin-left: 0;
+  }
+  .logo-msg {
+    font-size: small;
   }
   .product-total span {
     font-size: 2.2vw;
