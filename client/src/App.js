@@ -12,6 +12,7 @@ import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSetting
 import HomePage from "./components/Home/HomePage/HomePage";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
+import Orders from "./components/Orders/Orders";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="orders" element={<Orders />} />
         </Routes>
       </Router>
     </React.Fragment>

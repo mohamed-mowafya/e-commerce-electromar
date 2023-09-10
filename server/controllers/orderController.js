@@ -21,10 +21,12 @@ const addOrder = async (req, res) => {
    * of the user's order (if successful).
    */
   const userId = req.user.id;
-  let cart = await Cart.findOne({ userId });
+  const cart = await Cart.findOne({ userId });
+  const orderNumber = Date.now() + Math.random();
 
   await Order.create({
     userId,
+    orderNo: orderNumber,
     items: cart.items,
     bill: cart.total,
   });

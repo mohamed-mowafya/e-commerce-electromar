@@ -6,6 +6,9 @@ const orderSchema = new Schema({
   userId: {
     type: String,
   },
+  orderNo: {
+    type: Number,
+  },
   items: [
     {
       productId: {

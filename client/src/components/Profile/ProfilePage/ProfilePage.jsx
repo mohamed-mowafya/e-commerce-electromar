@@ -51,9 +51,7 @@ const ProfilePage = () => {
             >
               Track your recent purchases and view past orders with ease.
             </h6>
-            <Link disabled={true} to="/">
-              Your orders &gt;
-            </Link>
+            <Link to="/orders">Your orders &gt;</Link>
           </div>
         </div>
       </div>
