@@ -20,6 +20,9 @@
 .productTitle {
   font-size: 18px;
   color: gray;
+}
+
+.descHeight {
   min-height: 80px;
 }
 
@@ -27,7 +30,7 @@
   width: 100%;
   background-color: #211f1f;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .cartBtn {
@@ -104,9 +107,13 @@
 .navLink:hover {
   color: red;
 }
-@media (max-width: 800px) {
+@media (max-width: 800px),  (max-width: 1000px) {
   .productTitle {
-    min-height: 0px;
+    font-size: 18px;
+    color: gray;
+  }
+  .descHeight {
+    min-height: 80px;
   }
   .productText {
     font-size: 24px !important;

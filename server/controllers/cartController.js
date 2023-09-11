@@ -11,12 +11,17 @@ const getCart = async (req, res) => {
       model: "Product",
     });
 
-    if (cart) {
-      // If cart exists and has items.
-      res.send(cart);
-    } else {
-      res.send("Cart doesn't exist");
+    if (!cart) {
+      /**
+       * If user doesn't have an existing cart in db, we create one and send it to front.
+       */
+      cart = await Cart.create({
+        userId,
+        items: [],
+        total: 0,
+      });
     }
+    res.send(cart);
   } catch (err) {
     res.status(500).send(err.message);
   }

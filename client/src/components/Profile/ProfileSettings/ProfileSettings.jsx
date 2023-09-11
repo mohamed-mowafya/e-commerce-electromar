@@ -79,7 +79,7 @@ const ProfileSettings = () => {
 
   return (
     <React.Fragment>
-      <div className={`d-flex ms-auto justify-content-center mt-3 mb-2 `}>
+      <div className={`d-flex ms-auto justify-content-center mt-3 mb-2`}>
         <span className={`navbar-brand ${reuseClasses.logoBlack}`}>
           ElectroMar<span style={{ color: "red" }}>.</span>
         </span>
