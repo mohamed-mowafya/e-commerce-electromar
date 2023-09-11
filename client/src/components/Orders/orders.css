@@ -1,0 +1,19 @@
+
+.p-column-title, td {
+    color: black !important;
+}
+
+.p-datatable {
+    margin-top: 3em;
+    margin-left: 9em;
+}
+
+th {
+    padding: 0.8em 0.8em;
+}
+
+.p-datatable-thead {
+    background-color: #f9f9f9;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}

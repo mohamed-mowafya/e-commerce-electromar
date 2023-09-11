@@ -22,11 +22,17 @@ const CheckoutForm = ({ setCart }) => {
     });
   };
 
+  const addSuccessOrder = () => {
+    return axios.post(`${process.env.REACT_APP_API_URL}orders`, null, {
+      withCredentials: true,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
+      // If Stripe.js hasn't yet loaded.
       return;
     }
 
@@ -39,8 +45,6 @@ const CheckoutForm = ({ setCart }) => {
       },
       redirect: "if_required",
     });
-
-    debugger;
 
     if (error) {
       if (error.type === "card_error" || error.type === "validation_error") {
@@ -59,8 +63,10 @@ const CheckoutForm = ({ setCart }) => {
         progress: undefined,
         theme: "dark",
       });
-      emptyUserCart().then((res) => {
-        setCart(res.data);
+      addSuccessOrder().then(() => {
+        emptyUserCart().then((res) => {
+          setCart(res.data);
+        });
       });
     }
 

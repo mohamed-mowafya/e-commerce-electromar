@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import axios from "axios";
+import "primeflex/primeflex.css";
+import "./orders.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     getUserOrders();
-  });
+  }, []);
 
   const renderHeader = (orderNo) => {
     return (

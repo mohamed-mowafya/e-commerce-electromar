@@ -22,13 +22,13 @@ const addOrder = async (req, res) => {
    */
   const userId = req.user.id;
   const cart = await Cart.findOne({ userId });
-  const orderNumber = Date.now() + Math.random();
+  const orderNumber = parseInt(Date.now() + Math.random());
 
   await Order.create({
     userId,
     orderNo: orderNumber,
     items: cart.items,
-    bill: cart.total,
+    total: cart.total,
   });
   return res.status(201).send(`Order created for user ${userId}`);
 };

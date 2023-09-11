@@ -18,7 +18,6 @@ const Stripe = ({ cart, setCart }) => {
         { withCredentials: true }
       )
       .then((data) => {
-        debugger;
         setClientSecret(data.data.clientSecret);
         setStripePromise(loadStripe(process.env.REACT_APP_STRIPE_API_KEY));
       });
