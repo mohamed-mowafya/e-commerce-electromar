@@ -17,3 +17,32 @@ th {
     padding-top: 2em;
     padding-bottom: 2em;
 }
+
+tbody, td, tfoot, th, thead, tr {
+    text-align: center;
+}
+
+td {
+    padding-bottom: 1em;
+}
+
+img, svg {
+    margin-bottom: 0.1em;
+}
+
+path {
+    /**
+    SVG Expander image
+    **/
+    color: black;
+}
+
+.p-datatable .p-datatable-tbody > tr > td .p-row-toggler{
+    width: 2rem;
+    height: 2rem;
+    color: black;
+    border: 0 none;
+    background: transparent;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}

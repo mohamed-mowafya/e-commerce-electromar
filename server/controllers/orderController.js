@@ -6,6 +6,10 @@ const getUserOrders = async (req, res) => {
   const userId = req.user.id;
   try {
     Order.find({ userId })
+      .populate({
+        path: "items.product",
+        model: "Product",
+      })
       .sort({ date: -1 })
       .then((orders) => res.json(orders));
   } catch {

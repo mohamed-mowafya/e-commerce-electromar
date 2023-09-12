@@ -12,15 +12,15 @@ const orderSchema = new Schema(
     },
     items: [
       {
-        productId: {
-          type: String,
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
         },
         quantity: {
           type: Number,
           required: true,
           min: [1, "Product quantity needs be greater than 0."],
         },
-        price: Number,
       },
     ],
     total: {
@@ -28,7 +28,7 @@ const orderSchema = new Schema(
       required: true,
     },
   },
-  { timestamps: { createdAt: "created_at" } }
+  { timestamps: { createdAt: "createdAt" } }
 );
 
 module.exports = mongoose.model("Order", orderSchema);

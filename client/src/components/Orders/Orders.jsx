@@ -7,17 +7,14 @@ import "./orders.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [expandedRows, setExpandedRows] = useState(null);
 
   useEffect(() => {
     getUserOrders();
   }, []);
 
-  const renderHeader = (orderNo) => {
-    return (
-      <div className="flex flex-wrap align-items-center justify-content-between gap-2">
-        <span className="text-xl text-900 font-bold">{orderNo}</span>
-      </div>
-    );
+  const allowExpansion = (rowData) => {
+    return rowData.items.length > 0;
   };
 
   const getUserOrders = async () => {
@@ -26,15 +23,22 @@ const Orders = () => {
         withCredentials: true,
       })
       .then((res) => {
+        debugger;
         setOrders(res.data);
       });
   };
   return (
     <>
       <h1 className="cart-title">Your order history</h1>
-      <DataTable value={orders} tableStyle={{ minWidth: "60rem" }}>
+      <DataTable
+        dataKey="id"
+        value={orders}
+        expandedRows={expandedRows}
+        tableStyle={{ minWidth: "60rem" }}
+      >
+        <Column expander={allowExpansion} style={{ width: "5rem" }} />
         <Column field="orderNo" header="Order #"></Column>
-        <Column field="price" header="Price"></Column>
+        <Column field="total" header="Total price"></Column>
         <Column field="createdAt" header="Completion date"></Column>
       </DataTable>
     </>
