@@ -17,6 +17,10 @@ const Orders = () => {
     return rowData.items.length > 0;
   };
 
+  const setExpansion = (e) => {
+    debugger;
+  };
+
   const getUserOrders = async () => {
     await axios
       .get("http://localhost:5000/orders", {
@@ -27,14 +31,27 @@ const Orders = () => {
         setOrders(res.data);
       });
   };
+
+  const rowExpansionTemplate = (data) => {
+    return (
+      <div className="p-3">
+        <h5>Orders for {data.orderNo}</h5>
+        <DataTable value={data.items}>
+          <Column field="name" header="Name"></Column>
+        </DataTable>
+      </div>
+    );
+  };
   return (
     <>
       <h1 className="cart-title">Your order history</h1>
       <DataTable
-        dataKey="id"
+        dataKey="_id"
         value={orders}
         expandedRows={expandedRows}
-        tableStyle={{ minWidth: "60rem" }}
+        rowExpansionTemplate={rowExpansionTemplate}
+        onRowToggle={(e) => setExpandedRows(e.data)}
+        tableStyle={{ minWidth: "100rem" }}
       >
         <Column expander={allowExpansion} style={{ width: "5rem" }} />
         <Column field="orderNo" header="Order #"></Column>
