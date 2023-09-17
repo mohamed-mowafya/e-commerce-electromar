@@ -100,7 +100,11 @@ const bar = {
 
       const handleLogout = () => {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            `${process.env.REACT_APP_API_URL}logout`,
+            {},
+            { withCredentials: true }
+          )
           .then(() => {
             setAuthenticated(false);
           });

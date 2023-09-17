@@ -8,7 +8,7 @@ const Card = (props) => {
   const authenticated = useSelector(({ user }) => user.authenticated);
 
   const buildImageUrl = (fileName) => {
-    return `http://localhost:5000/file/${fileName}`;
+    return `${process.env.REACT_APP_API_URL}file/${fileName}`;
   };
 
   const handleAddToCart = async () => {
@@ -28,7 +28,7 @@ const Card = (props) => {
 
     axios
       .post(
-        "http://localhost:5000/cart",
+        `${process.env.REACT_APP_API_URL}cart`,
         { productId, quantity },
         { withCredentials: true }
       )

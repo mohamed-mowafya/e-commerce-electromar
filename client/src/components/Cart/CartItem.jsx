@@ -16,8 +16,8 @@ const CartItem = ({
         <div className="cart-item">
           <div className="cart-item-img-container">
             <img
-              crossorigin="anonymous"
-              src={`http://localhost:5000/file/${imgName}`}
+              crossOrigin="anonymous"
+              src={`${process.env.REACT_APP_API_URL}file/${imgName}`}
             />
           </div>
           <span className="cart-item-title">{name}</span>

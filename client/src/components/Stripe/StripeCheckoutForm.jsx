@@ -35,7 +35,7 @@ const CheckoutForm = ({ setCart }) => {
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/cart",
+        return_url: `${process.env.REACT_APP_WWW_URL}cart`,
       },
       redirect: "if_required",
     });
