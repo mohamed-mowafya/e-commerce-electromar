@@ -1,6 +1,6 @@
 import React from "react";
 import "../product_card.css";
-import SingleCard from "../../../components/Reusable/Card/SingleCard";
+import SingleCard from "../../Reusable/Card/SingleCard";
 
 const Product = (props) => {
   return (
@@ -10,7 +10,10 @@ const Product = (props) => {
           {props.products.map((product) => {
             return (
               <div className="col-sm-4 col-md-3 mb-4" key={product.id}>
-                <SingleCard product={product} />
+                <SingleCard
+                  extraClass={props.productsPageDesc}
+                  product={product}
+                />
               </div>
             );
           })}

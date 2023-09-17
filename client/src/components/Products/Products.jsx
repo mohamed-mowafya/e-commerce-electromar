@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductPageCards from "../Product/ProductPageCards/ProcuctPageCards";
+import ProductPageCards from "../Product/ProductPageCards/ProductPageCards";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import useAuth from "../hooks/useAuth";
@@ -31,7 +31,12 @@ const Products = () => {
 
   return (
     <React.Fragment>
-      {productsArr.length > 0 && <ProductPageCards products={productsArr} />}
+      {productsArr.length > 0 && (
+        <ProductPageCards
+          productsPageDesc="products-page-desc products-page-width img-card-products-page"
+          products={productsArr}
+        />
+      )}
     </React.Fragment>
   );
 };

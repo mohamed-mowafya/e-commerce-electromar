@@ -13,7 +13,6 @@ dotenv.config();
 
 const authRoutes = require("./routes/userAuthRoutes");
 const productRoutes = require("./routes/productRoutes");
-const orderRoutes = require("./routes/orderRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const fileRoutes = require("./routes/fileRoutes");
 const stripeRoutes = require("./routes/stripeRoutes");
@@ -61,7 +60,6 @@ require("./controllers/passportConfig")(passport);
 //-----------------ROUTES--------------------------------------------------------//
 app.use("/", authRoutes);
 app.use("/", productRoutes);
-app.use("/", orderRoutes);
 app.use("/", cartRoutes);
 app.use("/", fileRoutes);
 app.use("/", stripeRoutes);
