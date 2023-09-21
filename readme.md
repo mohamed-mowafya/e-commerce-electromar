@@ -1,7 +1,5 @@
 # e-commerce-electromar
 
-(Currently an almost complete Work In Progress project)
-
 ## Introduction
 
 e-commerce-electromar is a DIY practice e-commerce web application built using React, Redux, Express, and MongoDB. This application is solely for educational purposes and has no commercial use. It allows users to browse products, add them to the cart, and proceed to checkout.
