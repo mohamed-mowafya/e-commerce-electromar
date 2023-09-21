@@ -1,6 +1,5 @@
 # e-commerce-electromar
 
-(Currently an almost complete Work In Progress project)
 
 ## Introduction
 
