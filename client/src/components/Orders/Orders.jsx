@@ -19,7 +19,7 @@ const Orders = () => {
 
   const getUserOrders = async () => {
     await axios
-      .get("http://localhost:5000/orders", {
+      .get(`${process.env.REACT_APP_API_URL}orders`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -53,7 +53,7 @@ const Orders = () => {
               <img
                 crossOrigin="anonymous"
                 className="shadow-4 dt-image mt-2"
-                src={`http://localhost:5000/file/${rowData.product.image.fileName}`}
+                src={`${process.env.REACT_APP_API_URL}file/${rowData.product.image.fileName}`}
               />
             )}
           ></Column>
