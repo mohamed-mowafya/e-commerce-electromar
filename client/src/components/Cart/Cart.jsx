@@ -17,7 +17,7 @@ const Cart = () => {
 
   const getCart = () => {
     axios
-      .get("http://localhost:5000/cart", { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}cart`, { withCredentials: true })
       .then((response) => {
         setCart(response.data);
         setIsLoading(false); // This is to prevent the cart from rendering before the data is fetched.
@@ -28,7 +28,7 @@ const Cart = () => {
     if (action === "ADD") {
       axios
         .post(
-          "http://localhost:5000/cart",
+          `${process.env.REACT_APP_API_URL}cart`,
           { productId, quantity: 1 },
           { withCredentials: true }
         )
@@ -50,7 +50,7 @@ const Cart = () => {
       return;
     }
     axios
-      .delete(`http://localhost:5000/cart/${productId}`, {
+      .delete(`${process.env.REACT_APP_API_URL}cart/${productId}`, {
         withCredentials: true,
         params: { deleteAll: action === "DELETE_ALL" },
       })

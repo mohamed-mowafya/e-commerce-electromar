@@ -35,7 +35,7 @@ const ProfileSettings = () => {
   const updateUser = () => {
     axios
       .patch(
-        "http://localhost:5000/update-user",
+        `${process.env.REACT_APP_API_URL}update-user`,
         {
           email: email,
           password: oldPassword,
