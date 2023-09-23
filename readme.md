@@ -3,11 +3,15 @@
 
 ## Introduction
 
-e-commerce-electromar is a DIY practice e-commerce web application built using React, Redux, Express, and MongoDB. This application is solely for educational purposes and has no commercial use. It allows users to browse products, add them to the cart, track order history, and proceed to checkout.
+e-commerce-electromar is a DIY practice e-commerce web application built using React, Redux, Express, Stripe and MongoDB. This application is solely for educational purposes and has no commercial use. It allows users to browse products, add them to the cart, track order history, and proceed to checkout.
 
 ## Installation
 
 To install and run e-commerce-electromar on your local machine, please follow the instructions below.
+
+## Setup
+1. Create a .env file at the root of the project using the specified example values found in the example.env file.
+2. If you wish to test the Stripe functionality, you'll need a Stripe API key. You can obtain this by setting up a development Stripe account.
 
 ### Prerequisites
 
