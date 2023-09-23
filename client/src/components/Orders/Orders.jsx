@@ -17,10 +17,6 @@ const Orders = () => {
     return rowData.items.length > 0;
   };
 
-  const setExpansion = (e) => {
-    debugger;
-  };
-
   const getUserOrders = async () => {
     await axios
       .get("http://localhost:5000/orders", {

@@ -66,7 +66,7 @@ app.use("/", fileRoutes);
 app.use("/", stripeRoutes);
 app.use("/", orderRoutes);
 
-//// -------------- END OF ROUTES------------------------------------------------//
+//// --------------ROUTES------------------------------------------------//
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);
 });
