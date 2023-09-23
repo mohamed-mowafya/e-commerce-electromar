@@ -52,8 +52,6 @@ path {
     height: 75px;
 }
 
-@media (max-width: 767px) {
-    .responsive-datatable {
-      min-width: 100%; /* Adjust as needed for smaller screens */
-    }
-  }
+.dt-container {
+    font-size: 18px;
+}
