@@ -1,11 +1,9 @@
 import React from "react";
-import classes from "./reuse.module.css";
+import "./reuse.css";
 
 const Footer = () => {
   return (
-    <footer
-      className={`bg-dark text-center text-white footer ${classes.footer}`}
-    >
+    <footer className={"bg-dark text-center text-white footer footer"}>
       <div
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0,0,0,0.2)" }}

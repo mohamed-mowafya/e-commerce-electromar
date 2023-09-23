@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "./reuse.module.css";
+import "./reuse.css";
 import "primeicons/primeicons.css";
-import "./bootstrap_modif.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "./Search/Search";
@@ -14,11 +13,9 @@ const Navbar = () => {
     <React.Fragment>
       <TopBar />
       <React.Fragment>
-        <nav
-          className={`navbar navbar-expand-lg navbar-dark bg-dark ${classes.navContainer}`}
-        >
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark nav-container">
           <Link style={{ textDecoration: "none", marginLeft: "10%" }} to="/">
-            <span className={`navbar-brand ${classes.logo}`}>
+            <span className="navbar-brand logo">
               ElectroMar
               <span style={{ color: "red", fontSize: "42px" }}>.</span>
             </span>
@@ -38,7 +35,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className={`nav-link ${classes.navLink}`} to="products">
+                <Link className="d-flex nav-link" to="products">
                   Products
                 </Link>
               </li>
@@ -47,12 +44,12 @@ const Navbar = () => {
             </ul>
             <Search />
             {authenticated && (
-              <div className={`${classes.cart}`}>
+              <div className="cart">
                 <i
                   style={{ color: "red" }}
-                  className={`pi pi-shopping-cart ${classes.cartLogo}`}
+                  className="pi pi-shopping-cart cart-logo"
                 ></i>
-                <Link className={`${classes.link} ps-4`} to="cart">
+                <Link className="link ps-4" to="cart">
                   My Cart
                 </Link>
               </div>
@@ -68,9 +65,9 @@ const TopBar = () => {
   const authenticated = useSelector(({ user }) => user.authenticated);
 
   return (
-    <div className={classes.topbar}>
+    <div className="topbar">
       <div style={{ marginLeft: "12%" }}>
-        <div className={classes.flexContainer}>
+        <div className="flex-container">
           <div className="p-2">
             <i style={{ color: "red" }} className="p-2 pi pi-phone"></i>
             <span>514-333-3333</span>
@@ -111,14 +108,14 @@ const bar = {
           <div className="p-2 ms-auto">
             <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
 
-            <Link className={classes.link} to="profile">
+            <Link className="link" to="profile">
               My Account
             </Link>
           </div>
 
           <div className="p-2">
             <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
-            <Link onClick={handleLogout} className={classes.link} to="">
+            <Link onClick={handleLogout} className="link" to="">
               Sign out
             </Link>
           </div>
@@ -127,15 +124,15 @@ const bar = {
     },
     MyCart: () => {
       return (
-        <div className={classes.mobileAccount}>
-          <li className={`d-flex ${classes.navLink} `}>
-            <Link className={classes.link} to="profile">
+        <div className="mobile-account">
+          <li className="d-flex nav-link">
+            <Link className="d-flex nav-link" to="profile">
               My Account
             </Link>
           </li>
-          <div className={classes.mobileCart}>
-            <li className={`d-flex ${classes.navLink} `}>
-              <Link className={classes.link} to="cart">
+          <div className="mobile-cart">
+            <li className="d-flex nav-link">
+              <Link className="d-flex nav-link" to="cart">
                 My Cart
               </Link>
             </li>
@@ -154,7 +151,7 @@ const bar = {
               className="p-2 pi pi-sign-in"
             ></i>
 
-            <Link className={classes.link} to="login">
+            <Link className="link" to="login">
               Sign in
             </Link>
           </div>
@@ -165,7 +162,7 @@ const bar = {
               className="p-2 pi pi-user"
             ></i>
 
-            <Link className={classes.link} to="signup">
+            <Link className="link" to="signup">
               Sign up
             </Link>
           </div>
@@ -174,14 +171,14 @@ const bar = {
     },
     MyCart: () => {
       return (
-        <div className={classes.mobileAccount}>
-          <li className={`d-flex ${classes.navLink} `}>
-            <Link className={classes.link} to="login">
+        <div className="mobile-account">
+          <li className="d-flex nav-link">
+            <Link className="link" to="login">
               Sign in
             </Link>
           </li>
-          <li className={`d-flex ${classes.navLink} `}>
-            <Link className={classes.link} to="signup">
+          <li className="d-flex nav-link">
+            <Link className="link" to="signup">
               Sign up
             </Link>
           </li>

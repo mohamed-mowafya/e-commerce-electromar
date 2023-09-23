@@ -1,9 +1,9 @@
 .carousel-item {
-  height: 20rem;
+  height: 28rem;
 }
 
 .carousel-item img {
-  height: 20rem;
+  height: 28rem;
   object-fit: cover;
   width: 100vw;
 }
