@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../product_card.css";
-import reuseClasses from "../../../components/Reusable/reuse.module.css";
+import "../../../components/Reusable/reuse.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import SingleCard from "../../../components/Reusable/Card/SingleCard";
@@ -32,9 +32,7 @@ const Product = (props) => {
     <React.Fragment>
       {props.products && (
         <div className="ms-auto me-auto">
-          <h3
-            className={`${reuseClasses.productText} text-dark mt-3 text-center mb-5 pb-1 ms-auto me-auto`}
-          >
+          <h3 className="product-text text-dark mt-3 text-center mb-5 pb-1 ms-auto me-auto">
             Featured Products
           </h3>
           <div className="wrapper">

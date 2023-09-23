@@ -51,13 +51,7 @@ const ProfilePage = () => {
             >
               Track your recent purchases and view past orders with ease.
             </h6>
-            <Link
-              className={`${classes.disabledCursor}`}
-              onClick={(event) => event.preventDefault()}
-              to="/"
-            >
-              Your orders (coming soon...)
-            </Link>
+            <Link to="/orders">Your orders &gt;</Link>
           </div>
         </div>
       </div>

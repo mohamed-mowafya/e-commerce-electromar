@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import loginClasses from "../../Login/LoginForm/login.module.css";
 import classes from "./profileSettings.module.css";
-import reuseClasses from "../../Reusable/reuse.module.css";
+import "../../Reusable/reuse.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
@@ -79,15 +79,13 @@ const ProfileSettings = () => {
 
   return (
     <React.Fragment>
-      <div className={`d-flex ms-auto justify-content-center mt-3 mb-2`}>
-        <span className={`navbar-brand ${reuseClasses.logoBlack}`}>
+      <div className="d-flex ms-auto justify-content-center mt-3 mb-2">
+        <span className="navbar-brand logo-black">
           ElectroMar<span style={{ color: "red" }}>.</span>
         </span>
       </div>
       <div className="d-flex ms-auto justify-content-center mb-4">
-        <span className={`${reuseClasses.welcomeText}`}>
-          Welcome to your profile
-        </span>
+        <span className="welcome-text">Welcome to your profile</span>
       </div>
       <div className={`justify-content-center ${classes.formDivWidth}`}>
         <form onSubmit={handleSubmit}>

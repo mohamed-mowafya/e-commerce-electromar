@@ -16,6 +16,7 @@ const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const fileRoutes = require("./routes/fileRoutes");
 const stripeRoutes = require("./routes/stripeRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 mongoose
@@ -63,8 +64,9 @@ app.use("/", productRoutes);
 app.use("/", cartRoutes);
 app.use("/", fileRoutes);
 app.use("/", stripeRoutes);
+app.use("/", orderRoutes);
 
-//// -------------- END OF ROUTES------------------------------------------------//
+//// --------------ROUTES------------------------------------------------//
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);
 });

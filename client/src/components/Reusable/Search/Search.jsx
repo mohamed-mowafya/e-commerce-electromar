@@ -1,4 +1,4 @@
-import classes from "../reuse.module.css";
+import "../reuse.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -16,17 +16,14 @@ const Search = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSearch}
-      className={`d-flex  ${classes.searchForm} me-4`}
-    >
+    <form onSubmit={handleSearch} className="d-flex search-form me-4">
       <input
         className="form-control me-2"
         type="search"
         placeholder="Search for a product"
         name="search"
       />
-      <button className={`btn ${classes.searchBtn}`} type="submit">
+      <button className="btn search-btn" type="submit">
         <i className="pi pi-search" />
       </button>
     </form>

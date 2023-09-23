@@ -1,5 +1,5 @@
 import "../../Product/product_card.css";
-import reuseClasses from "../../../components/Reusable/reuse.module.css";
+import "../../../components/Reusable/reuse.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -67,9 +67,9 @@ const Card = (props) => {
             <p className={`text-dark mb-0`}>{props.product.price}$</p>
           </b>
           <p
-            className={`${reuseClasses.descHeight} ${
-              reuseClasses.productTitle
-            } pb-0 ${props.extraClass ? props.extraClass : ""}`}
+            className={`product-title desc-height pb-0 ${
+              props.extraClass ? props.extraClass : ""
+            }`}
           >
             {props.product.name}
           </p>
@@ -82,7 +82,7 @@ const Card = (props) => {
           <button
             onClick={handleAddToCart}
             type="button"
-            className={`btn p-0 ${reuseClasses.cartBtn} fw-bold`}
+            className="btn p-0 cart-btn fw-bold"
           >
             Add to cart
           </button>
