@@ -26,7 +26,7 @@ const SignUpForm = () => {
       setShowPassError(true);
     } else {
       await axios
-        .post("http://localhost:5000/register", {
+        .post(`${process.env.REACT_APP_API_URL}register`, {
           email,
           password,
           admin: false, // Users don't have admin access by default.

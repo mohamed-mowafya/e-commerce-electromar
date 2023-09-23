@@ -19,7 +19,7 @@ const Orders = () => {
 
   const getUserOrders = async () => {
     await axios
-      .get("http://localhost:5000/orders", {
+      .get(`${process.env.REACT_APP_API_URL}orders`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -53,7 +53,7 @@ const Orders = () => {
               <img
                 crossOrigin="anonymous"
                 className="shadow-4 dt-image mt-2"
-                src={`http://localhost:5000/file/${rowData.product.image.fileName}`}
+                src={`${process.env.REACT_APP_API_URL}file/${rowData.product.image.fileName}`}
               />
             )}
           ></Column>
@@ -68,7 +68,7 @@ const Orders = () => {
     );
   };
   return (
-    <>
+    <div className="dt-container">
       <h1 className="cart-title">Your order history</h1>
       <DataTable
         dataKey="_id"
@@ -81,24 +81,21 @@ const Orders = () => {
         tableStyle={{ minWidth: "100rem" }}
       >
         <Column expander={allowExpansion} style={{ width: "5rem" }} />
+        <Column field="orderNo" header="Order #"></Column>
         <Column
-          style={{ fontSize: "18px" }}
-          field="orderNo"
-          header="Order #"
-        ></Column>
-        <Column
-          style={{ fontSize: "18px" }}
           field="total"
           body={(rowData) => `$${rowData.total}`}
           header="Total price"
         ></Column>
         <Column
-          style={{ fontSize: "18px" }}
           field="createdAt"
+          body={(rowData) =>
+            `${rowData.createdAt ? rowData.createdAt.split("T")[0] : ""}`
+          }
           header="Completion date"
         ></Column>
       </DataTable>
-    </>
+    </div>
   );
 };
 

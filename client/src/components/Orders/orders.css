@@ -46,3 +46,12 @@ path {
     border-radius: 50%;
     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
+
+.dt-image {
+    width: 64px;
+    height: 75px;
+}
+
+.dt-container {
+    font-size: 18px;
+}
