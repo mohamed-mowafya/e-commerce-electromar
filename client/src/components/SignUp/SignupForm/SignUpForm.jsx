@@ -29,7 +29,6 @@ const SignUpForm = () => {
         .post(`${process.env.REACT_APP_API_URL}register`, {
           email,
           password,
-          admin: false, // Users don't have admin access by default.
         })
         .then(() => {
           toast.success("Welcome, please sign in with your new account.", {
