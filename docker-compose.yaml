@@ -1,36 +1,55 @@
-version: "3.8"
 services:
   client:
-    image: node:20-alpine3.16
+    image: node:25-alpine
     volumes:
       - ./client:/client
+      - /client/node_modules
     working_dir: /client
     command: sh -c "npm install && npm run start"
     ports:
       - 3000:3000
+    env_file:
+      - ./client/.env
     depends_on:
-      - mongo
       - server
+    stdin_open: true
+    tty: true
 
   server:
-    image: node:20-alpine3.16
+    image: node:25-alpine
     volumes:
       - ./server:/server
+      - /server/node_modules
     working_dir: /server
     command: sh -c "npm install && npm run start"
     ports:
-      - 5000:5000
+      - 5001:5000
+    env_file:
+      - ./server/.env
     depends_on:
       - mongo
 
   mongo:
-    image: mongo:7.0.0-rc2
+    image: mongo:8.0
     restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=ecom
 
   mongo-express:
-    image: mongo-express
+    image: mongo-express:latest
     restart: always
     ports:
       - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017/
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=pass
     depends_on:
       - mongo
+
+volumes:
+  mongo-data:

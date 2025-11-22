@@ -4,7 +4,6 @@ const cors = require("cors");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
@@ -20,11 +19,7 @@ const orderRoutes = require("./routes/orderRoutes");
 //---------------------------IMPORTS AND CONFIGS---------------------------------------------------------------------------//
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    // Set to "mongodb://mongo:27017/ecom" for docker
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -32,8 +27,8 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(
   session({

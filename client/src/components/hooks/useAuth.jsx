@@ -15,8 +15,15 @@ const useAuth = (redirect, protectedRoute) => {
   useEffect(() => {
     if (!authenticated) {
       const checkAuth = async () => {
-        const authRes = await isAuth();
-        handleAuth(authRes);
+        try {
+          const authRes = await isAuth();
+          handleAuth(authRes);
+        } catch (error) {
+          // User is not authenticated, handle gracefully
+          if (protectedRoute) {
+            navigate("/login");
+          }
+        }
       };
       checkAuth();
     }
