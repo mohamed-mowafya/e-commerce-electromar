@@ -16,26 +16,32 @@ const login = (req, res, next) => {
   })(req, res, next);
 };
 
-const signUp = (req, res, next) => {
-  User.findOne({ email: req.body.email }, async (err, doc) => {
-    if (err) throw err;
-    if (doc) res.status(400).json({ status: "User already exists." });
-    if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-      const newUser = new User({
-        email: req.body.email,
-        password: hashedPassword,
-      });
-      await newUser.save();
-      res.status(200).json({ status: "success" });
+const signUp = async (req, res, next) => {
+  try {
+    const doc = await User.findOne({ email: req.body.email });
+    if (doc) {
+      return res.status(400).json({ status: "User already exists." });
     }
-  });
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const newUser = new User({
+      email: req.body.email,
+      password: hashedPassword,
+    });
+    await newUser.save();
+    res.status(200).json({ status: "success" });
+  } catch (err) {
+    next(err);
+  }
 };
 
 const logOut = (req, res, next) => {
-  req.logout();
-  res.status(200).json({ status: "success" });
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.status(200).json({ status: "success" });
+  });
 };
 
 const checkAuth = (req, res, next) => {
