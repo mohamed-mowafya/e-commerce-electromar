@@ -99,7 +99,7 @@ const SignUpForm = () => {
             required
           />
           {showPassError && (
-            <span style={{ color: '#dc2626', fontSize: '0.875rem', marginTop: '0.5rem', display: 'block' }}>
+            <span className={classes.errorMessage}>
               Passwords do not match. Please try again.
             </span>
           )}
