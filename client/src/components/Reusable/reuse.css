@@ -248,7 +248,7 @@ a:focus {
   display: none;
 }
 
-   Responsive Design - Mobile & Tablet
+/* Responsive Design - Mobile & Tablet */
 
 @media (max-width: 1024px) {
   .search-form {
