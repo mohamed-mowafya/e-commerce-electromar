@@ -60,23 +60,25 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={formHandler} className="w-auto">
-      <div className="col-lg-6 mb-3">
+    <form onSubmit={formHandler} className="w-100">
+      <div className="mb-3">
         <label
           htmlFor="email"
           className={`form-label ${classes.loginFormText}`}
         >
-          Email address
+          Email Address
         </label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={`form-control`}
+          className={`form-control ${classes.formControl}`}
           id="email"
+          placeholder="Enter your email"
+          required
         />
       </div>
-      <div className="col-lg-6 mb-3">
+      <div className="mb-3">
         <label
           htmlFor="password"
           className={`form-label ${classes.loginFormText}`}
@@ -87,19 +89,18 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className={`form-control`}
+          className={`form-control ${classes.formControl}`}
           id="password"
+          placeholder="Enter your password"
+          required
         />
       </div>
-      <div className="col-lg-5">
-        <button
-          style={{ backgroundColor: "black" }}
-          type="submit"
-          className={`btn ps-4 pe-4 ${classes.loginBtn}`}
-        >
-          <b>Sign in</b>
-        </button>
-      </div>
+      <button
+        type="submit"
+        className={`btn ${classes.loginBtn}`}
+      >
+        Sign In
+      </button>
     </form>
   );
 };
