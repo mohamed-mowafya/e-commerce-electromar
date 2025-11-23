@@ -177,7 +177,7 @@
   padding: var(--spacing-md) !important;
 }
 
-   Responsive Design
+/* Responsive Design */
 
 @media screen and (max-width: 1024px) {
   .carousel-item,
