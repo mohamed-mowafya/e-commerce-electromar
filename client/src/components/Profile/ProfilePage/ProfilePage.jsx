@@ -7,7 +7,7 @@ const ProfilePage = () => {
   useAuth();
   return (
     <React.Fragment>
-      <div className="container" style={{ minHeight: '70vh', paddingTop: '2rem' }}>
+      <div className={`container ${classes.profileContainer}`}>
         <div className={classes.parentDiv}>
           <h1 className={classes.welcomeMessage}>
             My Account

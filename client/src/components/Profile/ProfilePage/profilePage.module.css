@@ -1,3 +1,8 @@
+.profileContainer {
+  min-height: 70vh;
+  padding-top: 2rem;
+}
+
 .welcomeMessage {
   color: #111827;
   font-family: 'Poppins', 'Inter', sans-serif;

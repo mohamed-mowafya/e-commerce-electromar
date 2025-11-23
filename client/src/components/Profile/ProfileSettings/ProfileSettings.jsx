@@ -79,7 +79,7 @@ const ProfileSettings = () => {
 
   return (
     <React.Fragment>
-      <div className="container" style={{ minHeight: '70vh', paddingTop: '3rem', paddingBottom: '3rem' }}>
+      <div className={`container ${classes.settingsPageContainer}`}>
         <div className={classes.formDivWidth}>
           <div className={classes.settingsContainer}>
             <h1 className={classes.pageTitle}>Account Settings</h1>
@@ -94,12 +94,11 @@ const ProfileSettings = () => {
                   Email Address
                 </label>
                 <input
-                  className={`form-control ${loginClasses.formControl}`}
+                  className={`form-control ${loginClasses.formControl} ${classes.disabledInput}`}
                   type="email"
                   id="email"
                   value={userIdentity}
                   disabled
-                  style={{ backgroundColor: '#f3f4f6', cursor: 'not-allowed' }}
                 />
               </div>
 
@@ -156,7 +155,7 @@ const ProfileSettings = () => {
                   required
                 />
                 {!isPasswordMatch && (
-                  <span style={{ color: '#dc2626', fontSize: '0.875rem', marginTop: '0.5rem', display: 'block' }}>
+                  <span className={classes.errorMessage}>
                     Passwords do not match. Please try again.
                   </span>
                 )}
