@@ -85,8 +85,14 @@ const HomePage = () => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+
       {homeProducts.length > 0 && (
-        <Product home={true} products={homeProducts} />
+        <div className="featured-section">
+          <div className="container-fluid px-4">
+            
+            <Product home={true} products={homeProducts} />
+          </div>
+        </div>
       )}
     </React.Fragment>
   );

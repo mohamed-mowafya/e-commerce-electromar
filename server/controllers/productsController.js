@@ -86,13 +86,17 @@ const updateProduct = (req, res) => {
 };
 
 const deleteProduct = (req, res) => {
-  Product.findByIdAndDelete(req.body.id, (err, docs) => {
-    if (err) {
+  Product.findByIdAndDelete(req.body.id)
+    .then((docs) => {
+      if (!docs) {
+        res.send("Product not found.");
+      } else {
+        res.send("Product deleted.");
+      }
+    })
+    .catch((err) => {
       res.send("Product not found.");
-    } else {
-      res.send("Product deleted.");
-    }
-  });
+    });
 };
 
 module.exports = { createProduct, deleteProduct, updateProduct, getProducts };

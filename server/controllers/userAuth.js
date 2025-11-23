@@ -5,13 +5,13 @@ const bcrypt = require("bcryptjs");
 const login = (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.status(403).json({ status: "fail" });
-    else {
+    if (!user) {
+      res.status(403).json({ status: "unauthorized" });
+    } else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.status(200).json({ status: "success" + req.user.id });
+        res.status(200).json({ status: "success", userId: req.user.id });
       });
-      next();
     }
   })(req, res, next);
 };
@@ -27,6 +27,7 @@ const signUp = async (req, res, next) => {
     const newUser = new User({
       email: req.body.email,
       password: hashedPassword,
+      admin: false,
     });
     await newUser.save();
     res.status(200).json({ status: "success" });
