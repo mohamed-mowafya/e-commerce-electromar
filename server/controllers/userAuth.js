@@ -6,7 +6,7 @@ const login = (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) {
-      res.status(403).json({ status: "Unauthorized" });
+      res.status(403).json({ status: "unauthorized" });
     } else {
       req.logIn(user, (err) => {
         if (err) throw err;
