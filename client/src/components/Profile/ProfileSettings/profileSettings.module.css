@@ -1,13 +1,72 @@
 .formDivWidth {
-  width: 25em;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-@media (max-width: 800px) {
+.settingsContainer {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pageTitle {
+  color: #111827;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.pageSubtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.formSection {
+  margin-bottom: 1.5rem;
+}
+
+.updateBtn {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  border-radius: 0.5rem !important;
+  color: white !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.updateBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+}
+
+.updateBtn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
   .formDivWidth {
-    width: 22em;
-    font-size: 14px;
-    color: gray;
+    padding: 1rem;
+  }
+
+  .settingsContainer {
+    padding: 1.5rem;
+  }
+
+  .pageTitle {
+    font-size: 1.75rem;
   }
 }
