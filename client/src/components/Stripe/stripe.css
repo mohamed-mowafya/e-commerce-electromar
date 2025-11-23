@@ -27,7 +27,6 @@ body {
   margin-bottom: 24px;
 }
 
-/* Buttons and links */
 #submit {
   background: #5469d4;
   font-family: Arial, sans-serif;
@@ -53,7 +52,6 @@ body {
   cursor: default;
 }
 
-/* spinner/processing state, errors */
 .spinner,
 .spinner:before,
 .spinner:after {

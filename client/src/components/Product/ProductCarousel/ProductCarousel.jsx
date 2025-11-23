@@ -35,14 +35,14 @@ const Product = (props) => {
           <h3 className="product-text text-dark mt-3 text-center mb-5 pb-1 ms-auto me-auto">
             Featured Products
           </h3>
-          <div className="wrapper">
+          <div className="carousel-wrapper">
             <Splide
               options={{
-                perPage: isMobile() ? 3 : 5,
-                height: "30rem",
+                perPage: isMobile() ? 2 : 4,
+                autoHeight: true,
                 rewind: true,
-                padding: 0,
-                gap: "0.5rem",
+                padding: { left: "2rem", right: "2rem" },
+                gap: "1.5rem",
               }}
             >
               {props.products.map((product) => {

@@ -9,9 +9,9 @@ module.exports = function (passport) {
         usernameField: "email",
         passwordField: "password",
       },
-      (username, password, done) => {
-        User.findOne({ email: username }, (err, user) => {
-          if (err) throw err;
+      async (username, password, done) => {
+        try {
+          const user = await User.findOne({ email: username });
           if (!user) return done(null, false);
           bcrypt.compare(password, user.password, (err, result) => {
             if (err) throw err;
@@ -21,7 +21,9 @@ module.exports = function (passport) {
               return done(null, false);
             }
           });
-        });
+        } catch (err) {
+          throw err;
+        }
       }
     )
   );
@@ -29,13 +31,16 @@ module.exports = function (passport) {
   passport.serializeUser((user, cb) => {
     cb(null, user._id);
   });
-  passport.deserializeUser((id, cb) => {
-    User.findOne({ _id: id }, (err, user) => {
+  passport.deserializeUser(async (id, cb) => {
+    try {
+      const user = await User.findOne({ _id: id });
       const userInformation = {
         email: user.email,
         id: user.id,
       };
-      cb(err, userInformation);
-    });
+      cb(null, userInformation);
+    } catch (err) {
+      cb(err);
+    }
   });
 };

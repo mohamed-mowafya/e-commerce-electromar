@@ -13,47 +13,66 @@ const Navbar = () => {
     <React.Fragment>
       <TopBar />
       <React.Fragment>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark nav-container">
-          <Link style={{ textDecoration: "none", marginLeft: "10%" }} to="/">
-            <span className="navbar-brand logo">
-              ElectroMar
-              <span style={{ color: "red", fontSize: "42px" }}>.</span>
-            </span>
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+        <nav className="navbar navbar-expand-lg navbar-light nav-container">
+          <div className="container-fluid px-4">
+            <Link style={{ textDecoration: "none" }} to="/">
+              <span className="navbar-brand logo">
+                ElectroMar<span style={{ color: "#dc2626" }}>.</span>
+              </span>
+            </Link>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="d-flex nav-link" to="products">
-                  Products
-                </Link>
-              </li>
-              {authenticated && <bar.auth.MyCart />}
-              {!authenticated && <bar.notAuth.MyCart />}
-            </ul>
-            <Search />
-            {authenticated && (
-              <div className="cart">
-                <i
-                  style={{ color: "red" }}
-                  className="pi pi-shopping-cart cart-logo"
-                ></i>
-                <Link className="link ps-4" to="cart">
-                  My Cart
-                </Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav ms-5 me-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="products">
+                    Products
+                  </Link>
+                </li>
+                {authenticated && (
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="orders">
+                        Orders
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="profile">
+                        Profile
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {authenticated && <bar.auth.MyCart />}
+                {!authenticated && <bar.notAuth.MyCart />}
+              </ul>
+
+              <div className="d-flex align-items-center gap-3">
+                <Search />
+                {authenticated && (
+                  <Link className="cart-btn" to="cart">
+                    <i className="pi pi-shopping-cart me-2"></i>
+                    Cart
+                  </Link>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </nav>
       </React.Fragment>
@@ -66,18 +85,18 @@ const TopBar = () => {
 
   return (
     <div className="topbar">
-      <div style={{ marginLeft: "12%" }}>
+      <div className="container-custom">
         <div className="flex-container">
           <div className="p-2">
-            <i style={{ color: "red" }} className="p-2 pi pi-phone"></i>
+            <i className="p-2 pi pi-phone" style={{ color: "var(--primary-light)" }}></i>
             <span>514-333-3333</span>
           </div>
           <div className="p-2">
-            <i style={{ color: "red" }} className="p-2 pi pi-at"></i>
+            <i className="p-2 pi pi-at" style={{ color: "var(--primary-light)" }}></i>
             <span>electromar@electromar.ca</span>
           </div>
           <div className="p-2">
-            <i style={{ color: "red" }} className="p-2 pi pi-map-marker"></i>
+            <i className="p-2 pi pi-map-marker" style={{ color: "var(--primary-light)" }}></i>
             <span>1523 rue Saint-Jacques</span>
           </div>
           {authenticated ? <bar.auth.MyAccount /> : <bar.notAuth.MyAccount />}
@@ -110,15 +129,14 @@ const bar = {
       return (
         <React.Fragment>
           <div className="p-2 ms-auto">
-            <i style={{ color: "red" }} className="pi pi-user p-2 pt-2"></i>
-
+            <i className="pi pi-user p-2 pt-2" style={{ color: "var(--primary-light)" }}></i>
             <Link className="link" to="profile">
               My Account
             </Link>
           </div>
 
           <div className="p-2">
-            <i style={{ color: "red" }} className="pi pi-sign-out p-2 pt-2"></i>
+            <i className="pi pi-sign-out p-2 pt-2" style={{ color: "var(--primary-light)" }}></i>
             <Link onClick={handleLogout} className="link" to="">
               Sign out
             </Link>
@@ -150,22 +168,14 @@ const bar = {
       return (
         <React.Fragment>
           <div className="p-2 ms-auto">
-            <i
-              style={{ color: "red", paddingTop: "10%" }}
-              className="p-2 pi pi-sign-in"
-            ></i>
-
+            <i className="p-2 pi pi-sign-in" style={{ color: "var(--primary-light)" }}></i>
             <Link className="link" to="login">
               Sign in
             </Link>
           </div>
 
           <div className="p-2">
-            <i
-              style={{ color: "red", paddingTop: "10%" }}
-              className="p-2 pi pi-user"
-            ></i>
-
+            <i className="p-2 pi pi-user" style={{ color: "var(--primary-light)" }}></i>
             <Link className="link" to="signup">
               Sign up
             </Link>
