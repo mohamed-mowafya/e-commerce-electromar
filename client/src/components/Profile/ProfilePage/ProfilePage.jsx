@@ -7,51 +7,45 @@ const ProfilePage = () => {
   useAuth();
   return (
     <React.Fragment>
-      <div className={classes.parentDiv}>
-        <h1 className={`${classes.welcomeMessage} mt-5`}>
-          <span style={{ color: "red" }}>
-            Hi customer, <br />
-          </span>
-          Welcome to your account
-        </h1>
-        <hr style={{ color: "gray" }}></hr>
-      </div>
-      <div className="d-flex mt-4 justify-content-center">
-        <div
-          className={`${classes.bottomSpacing} card`}
-          style={{ width: "25rem", height: "13rem" }}
-        >
-          <div className="card-body">
-            <h5 className="card-title mb-3" style={{ color: "black" }}>
-              <i className="pi pi-user-edit me-2" style={{ color: "red" }}></i>
-              Personal Information
-            </h5>
-            <h6
-              className={`card-subtitle text-muted mb-4 ${classes.linkPosition}`}
-            >
-              Update your account password at any time.
-            </h6>
-            <Link to="/settings">Your personal details &gt;</Link>
-          </div>
+      <div className={`container ${classes.profileContainer}`}>
+        <div className={classes.parentDiv}>
+          <h1 className={classes.welcomeMessage}>
+            My Account
+          </h1>
+          <p className={classes.welcomeSubtext}>
+            Manage your profile and view your order history
+          </p>
         </div>
-        <div
-          className={`${classes.bottomSpacing} card ms-2`}
-          style={{ width: "25rem", height: "13rem" }}
-        >
-          <div className="card-body">
-            <h5 className="card-title mb-3" style={{ color: "black" }}>
-              <i
-                className="pi pi-info-circle me-2"
-                style={{ color: "red" }}
-              ></i>
-              Order History
-            </h5>
-            <h6
-              className={`card-subtitle text-muted mb-2 ${classes.linkPosition}`}
-            >
-              Track your recent purchases and view past orders with ease.
-            </h6>
-            <Link to="/orders">Your orders &gt;</Link>
+
+        <div className={classes.cardsContainer}>
+          <div className={classes.profileCard}>
+            <div>
+              <h5 className={classes.cardTitle}>
+                <i className={`pi pi-user-edit me-2 ${classes.cardIcon}`}></i>
+                Personal Information
+              </h5>
+              <p className={classes.cardSubtitle}>
+                Update your account password and manage your security settings.
+              </p>
+              <Link to="/settings" className={classes.cardLink}>
+                Manage settings →
+              </Link>
+            </div>
+          </div>
+
+          <div className={classes.profileCard}>
+            <div>
+              <h5 className={classes.cardTitle}>
+                <i className={`pi pi-history me-2 ${classes.cardIcon}`}></i>
+                Order History
+              </h5>
+              <p className={classes.cardSubtitle}>
+                Track your recent purchases and view all past orders with detailed information.
+              </p>
+              <Link to="/orders" className={classes.cardLink}>
+                View orders →
+              </Link>
+            </div>
           </div>
         </div>
       </div>

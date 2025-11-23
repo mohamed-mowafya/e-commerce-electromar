@@ -50,22 +50,24 @@ const SignUpForm = () => {
 
   return (
     <React.Fragment>
-      <form className="w-auto" onSubmit={handleSubmit}>
-        <div className={`col-lg-6 mb-3`}>
+      <form className="w-100" onSubmit={handleSubmit}>
+        <div className="mb-3">
           <label
             htmlFor="email"
             className={`form-label ${classes.loginFormText}`}
           >
-            Email address
+            Email Address
           </label>
           <input
             type="email"
             onChange={(e) => setEmail(e.target.value)}
-            className={`form-control`}
-            id="exampleInputEmail1"
+            className={`form-control ${classes.formControl}`}
+            id="email"
+            placeholder="Enter your email"
+            required
           />
         </div>
-        <div className="col-lg-6 mb-3">
+        <div className="mb-3">
           <label
             htmlFor="password"
             className={`form-label ${classes.loginFormText}`}
@@ -75,39 +77,40 @@ const SignUpForm = () => {
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            className={`form-control`}
-            id="inputPassword"
+            className={`form-control ${classes.formControl}`}
+            id="password"
+            placeholder="Create a password"
+            required
           />
         </div>
-        <div className="col-lg-6 mb-3">
+        <div className="mb-3">
           <label
             htmlFor="password2"
             className={`form-label ${classes.loginFormText}`}
           >
-            Confirm your Password
+            Confirm Password
           </label>
           <input
             type="password"
             onChange={(e) => setConfirmPass(e.target.value)}
-            className={`form-control`}
-            id="inputPassword2"
+            className={`form-control ${classes.formControl}`}
+            id="password2"
+            placeholder="Re-enter your password"
+            required
           />
           {showPassError && (
-            <span className="text-danger">
-              Your password does not match the previous field.
+            <span className={classes.errorMessage}>
+              Passwords do not match. Please try again.
             </span>
           )}
         </div>
-        <div className="col-lg-5">
-          <button
-            style={{ backgroundColor: "black" }}
-            type="submit"
-            disabled={showPassError}
-            className={`btn ps-4 pe-4 ${classes.loginBtn}`}
-          >
-            <b>Sign up</b>
-          </button>
-        </div>
+        <button
+          type="submit"
+          disabled={showPassError}
+          className={`btn ${classes.loginBtn}`}
+        >
+          Create Account
+        </button>
       </form>
     </React.Fragment>
   );

@@ -1,46 +1,116 @@
+.profileContainer {
+  min-height: 70vh;
+  padding-top: 2rem;
+}
+
 .welcomeMessage {
-  color: black;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  margin-top: 1%;
+  color: #111827;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.welcomeSubtext {
+  color: #6b7280;
+  font-size: 1.125rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.parentDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0 2rem;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.profileCard {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profileCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #2563eb;
+}
+
+.cardIcon {
+  color: #2563eb;
+  font-size: 1.5rem;
+}
+
+.cardTitle {
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardSubtitle {
+  color: #6b7280;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.cardLink {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.cardLink:hover {
+  color: #1e40af;
 }
 
 .disabledCursor {
   cursor: default;
   text-decoration: none;
-  color: gray;
-  
+  color: #9ca3af;
 }
 
 .disabledCursor:hover {
-  color: gray;
+  color: #9ca3af;
 }
 
-.bottomSpacing {
-  padding-bottom: 0;
-}
-
-.parentDiv {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 1%;
-}
-
-.linkPosition {
-  padding-bottom: 50px;
-}
-
-@media (max-width: 800px) {
-  .bottomSpacing {
-    padding-bottom: 5px;
-  }
-
-  .linkPosition {
-    padding-bottom: 0px;
-  }
-
+@media (max-width: 768px) {
   .welcomeMessage {
-    color: black;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    padding-top: 30px;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .welcomeSubtext {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .parentDiv {
+    padding: 2rem 0 1.5rem;
   }
 }

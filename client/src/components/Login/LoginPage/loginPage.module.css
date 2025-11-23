@@ -1,17 +1,43 @@
-.loginTitle {
-  color: black;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: bold;
+.pageContainer {
+  min-height: 70vh;
+}
 
-  margin-top: 5%;
-  font-size: 50px;
+.loginTitle {
+  color: #111827;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  letter-spacing: -1px;
+}
+
+.pageSubtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.benefitsTitle {
+  color: #111827;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+.linkDivider {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
 }
 
 .secondSection {
-  color: black;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: bold;
-  margin-top: 20%;
+  color: #1f2937;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-top: 3rem;
+  font-size: 1.25rem;
 }
 
 .centerdiv {
@@ -21,22 +47,59 @@
 }
 
 .descriptionSection {
-  color: black;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-weight: bold;
-  margin-left: 2%;
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-left: 1rem;
+  font-size: 1.125rem;
+  margin-bottom: 0;
 }
+
 .loginCartLogo {
-  font-size: 22px;
+  font-size: 1.5rem;
+  color: #2563eb;
 }
+
 .signUpLink {
-  font-weight: bold;
-  font-size: 22px;
+  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.signUpLink:hover {
+  color: #1e40af;
+  text-decoration: underline;
 }
 
 .flexContainer {
   width: 100%;
   height: 100%;
+}
+
+.benefitsContainer {
+  background: #f9fafb;
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefitItem {
+  margin-bottom: 2rem;
+}
+
+.benefitItem:last-of-type {
+  margin-bottom: 0;
+}
+
+.benefitDescription {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-left: 2.5rem;
+  margin-top: 0.5rem;
 }

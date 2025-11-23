@@ -79,91 +79,98 @@ const ProfileSettings = () => {
 
   return (
     <React.Fragment>
-      <div className="d-flex ms-auto justify-content-center mt-3 mb-2">
-        <span className="navbar-brand logo-black">
-          ElectroMar<span style={{ color: "red" }}>.</span>
-        </span>
-      </div>
-      <div className="d-flex ms-auto justify-content-center mb-4">
-        <span className="welcome-text">Welcome to your profile</span>
-      </div>
-      <div className={`justify-content-center ${classes.formDivWidth}`}>
-        <form onSubmit={handleSubmit}>
-          <div className="pb-2">
-            <label
-              className={`form-label ${loginClasses.loginFormText}`}
-              htmlFor="email"
-            >
-              Email:
-            </label>
-            <input
-              className={`form-control`}
-              type="email"
-              id="email"
-              value={userIdentity}
-              disabled
-            />
+      <div className={`container ${classes.settingsPageContainer}`}>
+        <div className={classes.formDivWidth}>
+          <div className={classes.settingsContainer}>
+            <h1 className={classes.pageTitle}>Account Settings</h1>
+            <p className={classes.pageSubtitle}>Update your password and security information</p>
+
+            <form onSubmit={handleSubmit}>
+              <div className={classes.formSection}>
+                <label
+                  className={`form-label ${loginClasses.loginFormText}`}
+                  htmlFor="email"
+                >
+                  Email Address
+                </label>
+                <input
+                  className={`form-control ${loginClasses.formControl} ${classes.disabledInput}`}
+                  type="email"
+                  id="email"
+                  value={userIdentity}
+                  disabled
+                />
+              </div>
+
+              <div className={classes.formSection}>
+                <label
+                  className={`form-label ${loginClasses.loginFormText}`}
+                  htmlFor="oldPassword"
+                >
+                  Current Password
+                </label>
+                <input
+                  className={`form-control ${loginClasses.formControl}`}
+                  type="password"
+                  id="oldPassword"
+                  placeholder="Enter your current password"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className={classes.formSection}>
+                <label
+                  className={`form-label ${loginClasses.loginFormText}`}
+                  htmlFor="newPassword"
+                >
+                  New Password
+                </label>
+                <input
+                  className={`form-control ${loginClasses.formControl}`}
+                  type="password"
+                  id="newPassword"
+                  placeholder="Enter your new password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className={classes.formSection}>
+                <label
+                  className={`form-label ${loginClasses.loginFormText}`}
+                  htmlFor="confirmNewPassword"
+                >
+                  Confirm New Password
+                </label>
+                <input
+                  className={`form-control ${loginClasses.formControl}`}
+                  type="password"
+                  id="confirmNewPassword"
+                  placeholder="Re-enter your new password"
+                  value={confirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                  required
+                />
+                {!isPasswordMatch && (
+                  <span className={classes.errorMessage}>
+                    Passwords do not match. Please try again.
+                  </span>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={!isPasswordMatch}
+                className={`btn ${classes.updateBtn}`}
+              >
+                Update Password
+              </button>
+            </form>
           </div>
-          <div className="pb-2">
-            <label
-              className={`form-label ${loginClasses.loginFormText}`}
-              htmlFor="oldPassword"
-            >
-              Old Password:
-            </label>
-            <input
-              className={`form-control`}
-              type="password"
-              id="oldPassword"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-          </div>
-          <div className="pb-2">
-            <label
-              className={`form-label ${loginClasses.loginFormText}`}
-              htmlFor="newPassword"
-            >
-              New Password:
-            </label>
-            <input
-              className={`form-control`}
-              type="password"
-              id="newPassword"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-          </div>
-          <div className="pb-2">
-            <label
-              className={`form-label ${loginClasses.loginFormText}`}
-              htmlFor="confirmNewPassword"
-            >
-              Confirm New Password:
-            </label>
-            <input
-              className={`form-control mb-1`}
-              type="password"
-              id="confirmNewPassword"
-              value={confirmNewPassword}
-              onChange={(e) => setConfirmNewPassword(e.target.value)}
-            />
-            {!isPasswordMatch && (
-              <span className="text-danger">
-                Your password does not match the previous field.
-              </span>
-            )}
-          </div>
-          <div className="mt-3">
-            <button
-              style={{ backgroundColor: "black" }}
-              type="submit"
-              className={`btn ${loginClasses.loginBtn} w-25`}
-            >
-              <b>Update</b>
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </React.Fragment>
   );
