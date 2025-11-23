@@ -89,7 +89,7 @@ const HomePage = () => {
       {homeProducts.length > 0 && (
         <div className="featured-section">
           <div className="container-fluid px-4">
-            <h2 className="section-title">Featured Products</h2>
+            
             <Product home={true} products={homeProducts} />
           </div>
         </div>
